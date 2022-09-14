@@ -1,0 +1,31 @@
+body {
+  font-family: DIN Pro;
+  line-height: 1.25;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
+
+}
