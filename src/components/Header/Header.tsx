@@ -2,18 +2,19 @@ import { IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-
 import { Container } from '../Container';
 import { Logotype } from '../Logotype';
 import { colors } from '../../constants';
 
 import style from './Header.module.scss';
-
-const handleClick = (e: any) => {
-  return console.log(e.currentTarget);
-};
+import { useState } from 'react';
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const getValueForSearch = (e: any, value: any) => console.log(value.label);
+  const handleClick = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
+
   return (
     <>
       <header className={style.header}>
@@ -52,18 +53,25 @@ export const Header = () => {
                 }}
               />
             </IconButton>
-            {/* <Autocomplete
-              // classes={style.searchInput}
-              onChange={() => {}}
-              disablePortal
-              onClose={() => {}}
-              id="searchProduct"
-              options={products}
-              // sx={styles.forFormForSearchProduct}
-              renderInput={(params) => (
-                <TextField {...params} label="Enter to search" />
-              )}
-            /> */}
+            {isOpen && (
+              <div className={style.searchForm}>
+                <Autocomplete
+                  className={style.searchInput}
+                  onChange={getValueForSearch}
+                  disablePortal
+                  onClose={handleClose}
+                  id="searchProduct"
+                  options={products}
+                  sx={{
+                    width: 330,
+                    backgroundColor: colors.MAIN_LIGHT_COLOR,
+                  }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Enter to search" />
+                  )}
+                />
+              </div>
+            )}
           </div>
         </Container>
       </header>

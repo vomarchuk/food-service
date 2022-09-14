@@ -22,11 +22,13 @@
 .headerContacts {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
 }
 
 .headerText {
   color: $main-dark-color;
+  margin-bottom: 1px;
 }
 
 .headerPhone {
@@ -48,4 +50,12 @@
 
 .headerTimeWorks {
   color: $secondary-color;
+}
+
+.searchForm {
+  position: absolute;
+  top: 48px;
+  // left: calc(50% - 180px);
+  outline: 3px solid $main-accent-color;
+  border-radius: 5px;
 }
