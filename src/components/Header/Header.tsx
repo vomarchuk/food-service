@@ -9,6 +9,8 @@ import { colors } from '../../constants';
 import style from './Header.module.scss';
 import { useState } from 'react';
 
+import { alpha, styled } from '@mui/material/styles';
+
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const getValueForSearch = (e: any, value: any) => console.log(value.label);
@@ -67,7 +69,7 @@ export const Header = () => {
                     backgroundColor: colors.MAIN_LIGHT_COLOR,
                   }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Enter to search" />
+                    <CssTextField {...params} label="Enter to search" />
                   )}
                 />
               </div>
@@ -80,3 +82,24 @@ export const Header = () => {
 };
 
 const products = [{ label: 'sushi1' }, { label: 'sushi2' }];
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: colors.MAIN_DARK_COLOR,
+    fontSize: '20px',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'green',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: colors.SECONDARY_COLOR,
+    },
+    '&:hover fieldset': {
+      borderColor: 'yellow',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: colors.MAIN_ACCENT_COLOR,
+    },
+  },
+});
