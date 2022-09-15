@@ -12,13 +12,17 @@ export const FooterNav = () => {
   return (
     <Box sx={styles.forBox}>
       <Stack direction="row" spacing={'35px'} sx={styles.forBottomNav}>
-        <Link className={style.bottomNavLink} href="/menu">
+        <Link sx={styles.forLink} className={style.bottomNavLink} href="/menu">
           <MenuIcon /> <p className={style.navText}>Menu</p>
         </Link>
-        <Link className={style.bottomNavLink} href="/cart">
+        <Link sx={styles.forLink} className={style.bottomNavLink} href="/cart">
           <CartIcon /> <p className={style.navText}>Cart</p>
         </Link>
-        <Link className={style.bottomNavLink} href="/feedback">
+        <Link
+          sx={styles.forLink}
+          className={style.bottomNavLink}
+          href="/feedback"
+        >
           <FeedBackIcon /> <p className={style.navText}>FeedBack</p>
         </Link>
       </Stack>
@@ -41,5 +45,10 @@ const styles = {
     height: '72px',
     padding: '11px 66px',
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  forLink: {
+    textDecoration: 'none',
+    color: colors.MAIN_DARK_COLOR,
   },
 };
