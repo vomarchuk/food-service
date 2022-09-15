@@ -1,19 +1,25 @@
+import { useState } from 'react';
+
+import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+
 import { Container } from '../Container';
 import { Logotype } from '../Logotype';
 import { colors } from '../../constants';
 
 import style from './Header.module.scss';
-import { useState } from 'react';
-
-import { alpha, styled } from '@mui/material/styles';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const getValueForSearch = (e: any, value: any) => console.log(value.label);
+  const getValueForSearch = (
+    evt: React.SyntheticEvent<Element, Event>,
+    value: Product | null
+  ) => {
+    console.log(value?.label);
+  };
   const handleClick = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
@@ -69,7 +75,7 @@ export const Header = () => {
                     backgroundColor: colors.MAIN_LIGHT_COLOR,
                   }}
                   renderInput={(params) => (
-                    <CssTextField {...params} label="Enter to search" />
+                    <CustomTextField {...params} label="Enter to search" />
                   )}
                 />
               </div>
@@ -81,9 +87,12 @@ export const Header = () => {
   );
 };
 
-const products = [{ label: 'sushi1' }, { label: 'sushi2' }];
+interface Product {
+  label: string;
+}
+const products: Product[] = [{ label: 'sushi1' }, { label: 'sushi2' }];
 
-const CssTextField = styled(TextField)({
+const CustomTextField = styled(TextField)({
   '& label.Mui-focused': {
     color: colors.MAIN_DARK_COLOR,
     fontSize: '20px',
@@ -96,7 +105,7 @@ const CssTextField = styled(TextField)({
       borderColor: colors.SECONDARY_COLOR,
     },
     '&:hover fieldset': {
-      borderColor: 'yellow',
+      borderColor: colors.MAIN_ACCENT_COLOR,
     },
     '&.Mui-focused fieldset': {
       borderColor: colors.MAIN_ACCENT_COLOR,

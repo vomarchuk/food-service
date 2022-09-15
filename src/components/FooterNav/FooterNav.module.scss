@@ -1,0 +1,13 @@
+@import '../../styles/shared.scss';
+
+
+.bottomNavLink {
+  color: $main-dark-color;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 17px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column
+}
