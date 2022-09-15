@@ -1,7 +1,12 @@
 @import '../../styles/shared.scss';
 
+.footerContactBox {
+  position: fixed;
+  width: 320px;
+  bottom: 103px;
+}
+
 .footerContactsTitle {
-  font-size: 18px;
   line-height: 22px;
   color: $secondary-color;
 }
@@ -10,4 +15,16 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
+}
+
+.contactList {
+  margin-top: 31px;
+
+  span {
+    text-decoration: underline;
+  }
+}
+
+.contactItem:not(:first-child) {
+  margin-top: 5px;
 }
