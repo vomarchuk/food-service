@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
-import { styled } from '@mui/material/styles';
-import { IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
+import {
+  Autocomplete,
+  TextField,
+  IconButton,
+  styled,
+  Link,
+} from '@mui/material';
 
 import { Container } from '../Container';
 import { Logotype } from '../Logotype';
@@ -28,7 +31,9 @@ export const Header = () => {
       <header className={style.header}>
         <Container>
           <div className={style.headerWrapper}>
-            <Logotype />
+            <Link href="/">
+              <Logotype />
+            </Link>
             <div className={style.headerContacts}>
               <p className={style.headerText}>Our phones</p>
               <a className={style.headerPhone} href="tel:+996705188955">
@@ -41,7 +46,7 @@ export const Header = () => {
             <div className={style.headerTimeWorksBox}>
               <div className={style.iconWatches}></div>
               <p className={style.headerTimeWorks}>
-                We're working <br />
+                We work <br />
                 from 10:00 to 00:00
               </p>
             </div>

@@ -1,3 +1,9 @@
+import { CategoriesList } from '../../components/CategoriesList';
+import { Container } from '../../components/Container';
 export const HomePage = () => {
-  return <p>Hello this is HomePage</p>;
+  return (
+    <Container>
+      <CategoriesList />
+    </Container>
+  );
 };
