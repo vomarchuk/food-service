@@ -1,8 +1,6 @@
 import { Box, Link } from '@mui/material';
 
-import { WhatsappIcon } from '../Icons/WhatsappIcon';
-import { TelegramIcon } from '../Icons/TelegramIcon';
-import { InstagramIcon } from '../Icons/InstagramIcon';
+import { WhatsappIcon, TelegramIcon, InstagramIcon } from '../Icons';
 
 import { colors } from '../../constants';
 
