@@ -1,8 +1,22 @@
 @import '../../styles/shared.scss';
 
+.box {
+  // text-align: center;
+}
+
 .title {
   font-size: 24px;
   color: $secondary-color;
+}
+
+.text:not(:first-child) {
+  margin-top: 10px;
+}
+
+.list {
+  padding-left: 20px;
+  margin-top: 10px;
+  list-style: disc;
 }
 
 .descriptionFull {
@@ -13,13 +27,14 @@
   line-height: 18px;
   color: $secondary-color;
 
-  outline: 1px solid tomato;
+
+
 }
 
 .description {
   @extend .descriptionFull;
 
-  height: 200px;
+  height: 160px;
   overflow: hidden;
 }
 
