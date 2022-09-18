@@ -1,38 +1,43 @@
-import { Grid, Paper, styled } from '@mui/material';
-
+import { Grid, Link, Paper, styled } from '@mui/material';
 import { beckEnd } from '../../goods';
-
+import { CardMenu } from '../CardMenu';
 import style from './CategoriesList.module.scss';
 
 export const CategoriesList = () => {
-  console.log(beckEnd.categories);
   return (
-    <Grid container justifyContent="space-between" spacing={1}>
+    <Grid
+      sx={styles.forGrid}
+      container
+      spacing={1}
+      justifyContent="space-between"
+    >
       {beckEnd.categories.map((category) => {
-        console.log(category);
+        const {
+          categoryId,
+          categoryName,
+          fullName,
+          smallImage,
+          soon,
+          doubleCard,
+        } = category;
         return (
-          <Grid item xs={6} spacing={1}>
-            <Paper
-              sx={{
-                with: '162px',
-                height: '157px',
-              }}
-            >
-              <img
-                src={category.smallImage.x1}
-                alt=""
-                width="162px"
-                height="157px"
-                srcSet={`${category.smallImage.x1},
-                ${category.smallImage.x2} 2x
-               `}
-              />
-              <p>Title</p>
-              <p>Soon</p>
-            </Paper>
-          </Grid>
+          <CardMenu
+            key={`${categoryId}-${categoryName}`}
+            id={categoryId}
+            categoryName={categoryName}
+            smallImage={smallImage}
+            fullName={fullName}
+            soon={soon}
+            doubleCard={doubleCard}
+          />
         );
       })}
     </Grid>
   );
+};
+
+const styles = {
+  forGrid: {
+    marginTop: '20px',
+  },
 };
