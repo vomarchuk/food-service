@@ -1,6 +1,21 @@
-import { Grid, Link, Paper, styled, Box } from '@mui/material';
+import { Grid, Box, Skeleton } from '@mui/material';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import style from './CardMenu.module.scss';
+
+type SmallImage = {
+  x1: string;
+  x2: string;
+};
+interface ICardMenu {
+  categoryId: string;
+  categoryName: string;
+  fullName: string;
+  smallImage: SmallImage;
+  soon: boolean;
+  doubleCard: boolean;
+}
 
 export const CardMenu = ({
   categoryName,
@@ -8,47 +23,47 @@ export const CardMenu = ({
   smallImage,
   soon,
   doubleCard,
-}: any) => {
-  if (doubleCard === false)
+}: ICardMenu) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 100);
+
+  const rendering = (size: number) => {
     return (
-      <Grid item xs={6} container spacing={0}>
-        <Link sx={styles.forLink} href={`/menu/${categoryName}`}>
-          <img
-            className={style.cardImage}
-            src={smallImage.x1}
-            alt={fullName}
-            srcSet={`${smallImage.x1} 1x,
-      ${smallImage.x2}2x `}
+      <Grid item xs={size} container spacing={0}>
+        {isLoading ? (
+          <Skeleton
+            sx={styles.forSkeleton}
+            variant="rectangular"
+            animation="wave"
+            width="158px"
+            height="175px"
           />
-          <Box>
-            <h2 className={style.cardTitle}>{fullName}</h2>
-            {soon && <p className={style.cardCoon}>Soon</p>}
-          </Box>
-        </Link>
+        ) : (
+          <Link className={style.link} to={`/category/${categoryName}`}>
+            <img
+              className={style.cardImage}
+              src={smallImage.x1}
+              alt={fullName}
+              srcSet={`${smallImage.x1} 1x,
+                ${smallImage.x2}2x `}
+            />
+            <Box>
+              <h2 className={style.cardTitle}>{fullName}</h2>
+              {soon && <p className={style.cardCoon}>Soon</p>}
+            </Box>
+          </Link>
+        )}
       </Grid>
     );
-  return (
-    <Grid item xs={12} container spacing={0}>
-      <Link sx={styles.forLink} href={`/menu/${categoryName}`}>
-        <img
-          className={style.cardImage}
-          src={smallImage.x1}
-          alt={fullName}
-          srcSet={`${smallImage.x1} 1x,
-      ${smallImage.x2}2x `}
-        />
-        <Box>
-          <h2 className={style.cardPromoTitle}>{fullName}</h2>
-          <p>{soon}</p>
-        </Box>
-      </Link>
-    </Grid>
-  );
+  };
+  return doubleCard ? rendering(12) : rendering(6);
 };
 
 const styles = {
-  forLink: {
-    position: 'relative',
-    // backgroundColor: 'tomato',
+  forSkeleton: {
+    borderRadius: '5px',
   },
 };

@@ -1,18 +1,29 @@
-interface SmallImage {
+interface ISmallImage {
   x1: string;
   x2: string;
 }
 
-interface Categories {
+interface ICategories {
   categoryId: string;
   categoryName: string;
   fullName: string;
-  smallImage: SmallImage;
+  smallImage: ISmallImage;
   soon: boolean;
   doubleCard: boolean;
 }
+interface IProducts {
+  productId: string;
+  productName: string;
+  categoryId: string;
+  weight: number;
+  chunks: number;
+  price: number;
+  smallImage: ISmallImage;
+}
+
 interface BeckEnd {
-  categories: Categories[];
+  categories: ICategories[];
+  products: IProducts[];
 }
 
 export const beckEnd: BeckEnd = {
@@ -127,5 +138,67 @@ export const beckEnd: BeckEnd = {
       soon: false,
       doubleCard: true,
     },
+  ],
+  products: [
+    {
+      productId: '1',
+      productName: 'Salmon set',
+      categoryId: '2',
+      weight: 1050,
+      chunks: 30,
+      price: 1550,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/21/1Lg3ND.salmon-set.jpg',
+        x2: 'https://i.im.ge/2022/09/21/1LgYV4.salmon-set2x.jpg',
+      },
+    },
+    {
+      productId: '2',
+      productName: 'Philadelphia LOVE set',
+      categoryId: '2',
+      weight: 1000,
+      chunks: 40,
+      price: 109,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/21/1L8GWC.Philadelphia-LOVE-set.jpg',
+        x2: 'https://i.im.ge/2022/09/21/1LRMoq.Philadelphia-LOVE-set2x.jpg',
+      },
+    },
+    {
+      productId: '3',
+      productName: '5 Philadelphia set',
+      categoryId: '2',
+      weight: 1120,
+      chunks: 40,
+      price: 115,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1LK4CP.5-Philadelphia-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1LKBv1.5-Philadelphia-set2x.jpg',
+      },
+    },
+    {
+      productId: '4',
+      productName: 'Philadelphia and salmon set',
+      categoryId: '2',
+      weight: 1260,
+      chunks: 36,
+      price: 124,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1LVFDL.Philadelphia-and-salmon-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1LVOCG.Philadelphia-and-salmon-set2x.jpg',
+      },
+    },
+    // {
+    //   productId: '',
+    //   productName: '',
+    //   categoryId: '',
+    //   weight: 0,
+    //   chunks: 0,
+    //   price: 0,
+    //   smallImage: {
+    //     x1: '',
+    //     x2: '',
+    //   },
+    // },
   ],
 };

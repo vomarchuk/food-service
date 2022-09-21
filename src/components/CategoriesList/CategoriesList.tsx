@@ -1,7 +1,8 @@
-import { Grid, Link, Paper, styled } from '@mui/material';
+import { Grid } from '@mui/material';
+
 import { beckEnd } from '../../goods';
 import { CardMenu } from '../CardMenu';
-import style from './CategoriesList.module.scss';
+// import style from './CategoriesList.module.scss';
 
 export const CategoriesList = () => {
   return (
@@ -23,7 +24,7 @@ export const CategoriesList = () => {
         return (
           <CardMenu
             key={`${categoryId}-${categoryName}`}
-            id={categoryId}
+            categoryId={categoryId}
             categoryName={categoryName}
             smallImage={smallImage}
             fullName={fullName}
