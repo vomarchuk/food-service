@@ -28,7 +28,7 @@ export const CardMenu = ({
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 100);
+  }, 1000);
 
   const rendering = (size: number) => {
     return (
