@@ -1,4 +1,4 @@
-interface ISmallImage {
+interface IImage {
   x1: string;
   x2: string;
 }
@@ -7,7 +7,7 @@ export interface ICategories {
   categoryId: string;
   categoryName: string;
   fullName: string;
-  smallImage: ISmallImage;
+  smallImage: IImage;
   soon: boolean;
   doubleCard: boolean;
 }
@@ -18,7 +18,8 @@ export interface IProducts {
   weight: number;
   chunks: number | null;
   price: number;
-  smallImage: ISmallImage;
+  smallImage: IImage;
+  largeImage?: IImage;
 }
 
 export interface IBeckEnd {

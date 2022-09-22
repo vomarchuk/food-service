@@ -1,8 +1,41 @@
+@import '../../styles/shared.scss';
+
 .card {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  // height: 584px;
 
-  // display: flex;
-  height: 584px;
-  background-color: #fff;
-
+  background-color: $main-light-color;
   border-radius: 15px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 30px;
+  color: $primary-color;
+}
+
+.text {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 22px;
+  color: $main-accent-color;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  width: 100%;
+  justify-content: center;
+}
+
+.price {
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: $primary-color;
 }

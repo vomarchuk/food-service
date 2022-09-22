@@ -161,6 +161,10 @@ export const beckEnd: IBeckEnd = {
         x1: 'https://i.im.ge/2022/09/22/1LVFDL.Philadelphia-and-salmon-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1LVOCG.Philadelphia-and-salmon-set2x.jpg',
       },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hKOZy.Philadelphia-and-salmon-set3.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1hKFmJ.Philadelphia-and-salmon-set4.jpg',
+      },
     },
     {
       productId: '5',

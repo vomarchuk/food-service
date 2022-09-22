@@ -35,7 +35,7 @@ export const ProductsPage = () => {
             const {
               productId,
               productName,
-              categoryId,
+              // categoryId,
               weight,
               chunks,
               price,
@@ -88,6 +88,7 @@ const styles = {
   forButton: {
     textTransform: 'none',
     backgroundColor: colors.MAIN_ACCENT_COLOR,
+    color: colors.SECONDARY_LIGHT_COLOR,
     padding: '2px 26px',
     '&:hover': {
       backgroundColor: colors.ACTIVE_ACCENT_COLOR,

@@ -11,7 +11,7 @@ export const FooterNav = () => {
   return (
     <Box sx={styles.forBox}>
       <Stack direction="row" spacing={'35px'} sx={styles.forBottomNav}>
-        <Link sx={styles.forLink} className={style.bottomNavLink} href="/menu">
+        <Link sx={styles.forLink} className={style.bottomNavLink} href="/">
           <MenuIcon /> <p className={style.navText}>Menu</p>
         </Link>
         <Link sx={styles.forLink} className={style.bottomNavLink} href="/cart">
