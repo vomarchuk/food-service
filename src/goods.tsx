@@ -1,32 +1,6 @@
-interface ISmallImage {
-  x1: string;
-  x2: string;
-}
+import { IBeckEnd } from './interfaces/goods.interface';
 
-interface ICategories {
-  categoryId: string;
-  categoryName: string;
-  fullName: string;
-  smallImage: ISmallImage;
-  soon: boolean;
-  doubleCard: boolean;
-}
-interface IProducts {
-  productId: string;
-  productName: string;
-  categoryId: string;
-  weight: number;
-  chunks: number;
-  price: number;
-  smallImage: ISmallImage;
-}
-
-interface BeckEnd {
-  categories: ICategories[];
-  products: IProducts[];
-}
-
-export const beckEnd: BeckEnd = {
+export const beckEnd: IBeckEnd = {
   categories: [
     {
       categoryId: '1',
@@ -248,17 +222,65 @@ export const beckEnd: BeckEnd = {
     //     x2: '',
     //   },
     // },
-    // {
-    //   productId: '',
-    //   productName: '',
-    //   categoryId: '',
-    //   weight: 0,
-    //   chunks: 0,
-    //   price: 0,
-    //   smallImage: {
-    //     x1: '',
-    //     x2: '',
-    //   },
-    // },
+    {
+      productId: '1',
+      productName: 'Diabolo',
+      categoryId: '1',
+      weight: 41,
+      chunks: null,
+      price: 50,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
+    {
+      productId: '2',
+      productName: 'Hawaii',
+      categoryId: '1',
+      weight: 41,
+      chunks: null,
+      price: 48,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
+    {
+      productId: '3',
+      productName: 'Pepperoni',
+      categoryId: '1',
+      weight: 41,
+      chunks: null,
+      price: 48,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
+    {
+      productId: '4',
+      productName: 'Vegetarian Pizza',
+      categoryId: '1',
+      weight: 41,
+      chunks: null,
+      price: 53,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
+    {
+      productId: '5',
+      productName: 'Carbonara',
+      categoryId: '1',
+      weight: 41,
+      chunks: null,
+      price: 54,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
   ],
 };

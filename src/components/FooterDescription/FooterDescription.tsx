@@ -55,11 +55,8 @@ export const FooterDescription = () => {
     </Box>
   );
 };
-interface Styles {
-  [key: string]: { [key: string]: string | number };
-}
 
-const styles: Styles = {
+const styles = {
   forBox: { marginTop: '20px' },
   forButton: {
     left: '50%',

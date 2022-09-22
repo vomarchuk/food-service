@@ -2,20 +2,8 @@ import { Grid, Box, Skeleton } from '@mui/material';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { ICategories } from '../../interfaces/goods.interface';
 import style from './CardMenu.module.scss';
-
-type SmallImage = {
-  x1: string;
-  x2: string;
-};
-interface ICardMenu {
-  categoryId: string;
-  categoryName: string;
-  fullName: string;
-  smallImage: SmallImage;
-  soon: boolean;
-  doubleCard: boolean;
-}
 
 export const CardMenu = ({
   categoryName,
@@ -23,7 +11,7 @@ export const CardMenu = ({
   smallImage,
   soon,
   doubleCard,
-}: ICardMenu) => {
+}: ICategories) => {
   const [isLoading, setIsLoading] = useState(true);
 
   setTimeout(() => {
