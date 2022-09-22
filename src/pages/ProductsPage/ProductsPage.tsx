@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { Container } from '../../components/Container';
+import { Sorting } from '../../components/Sorting';
 import { IProducts } from '../../interfaces/goods.interface';
 import { beckEnd } from '../../goods';
 import { colors } from '../../constants';
@@ -29,6 +30,8 @@ export const ProductsPage = () => {
 
   return (
     <Container>
+      <Sorting />
+      <h2 className={style.titleCategory}>{categoryName}</h2>
       <ul className={style.productsList}>
         {products &&
           products.map((product) => {
