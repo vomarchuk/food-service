@@ -1,4 +1,13 @@
-import { IBeckEnd } from './interfaces/goods.interface';
+import { IBeckEnd, ITypesSort } from './interfaces/goods.interface';
+
+export const typesSort: ITypesSort = {
+  DEFAULT: 'By default',
+  BY_NAME: 'By name',
+  PRICE_LOW_TO_HIGH: 'Price: low to high',
+  PRICE_HIGH_TO_LOW: 'Price: high to low',
+  NUMBER_OF_PRICES: 'Number of prices',
+  WEIGHT: 'Weight',
+};
 
 export const beckEnd: IBeckEnd = {
   categories: [
