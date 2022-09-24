@@ -7,6 +7,7 @@
   margin-right: auto;
   background-color: $main-light-color;
   border-bottom: 0.5px solid $secondary-color;
+  z-index: 99;
 }
 
 .headerWrapper {
@@ -54,6 +55,6 @@
 
 .searchForm {
   position: absolute;
-  top: 48px;
+  top: 64px;
   border-radius: 5px;
 }
