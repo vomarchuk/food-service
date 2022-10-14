@@ -82,6 +82,7 @@ export const FooterContacts = () => {
 const styles = {
   forBox: {
     textAlign: 'center',
+    paddingBottom: '105px',
   },
   forIconLink: {
     opacity: 0.55,

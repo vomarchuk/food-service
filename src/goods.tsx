@@ -299,5 +299,17 @@ export const beckEnd: IBeckEnd = {
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
       },
     },
+    {
+      productId: '6',
+      productName: 'Margarita',
+      categoryId: '1',
+      weight: 41,
+      chunks: null,
+      price: 45,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
   ],
 };

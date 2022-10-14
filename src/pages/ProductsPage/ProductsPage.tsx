@@ -13,6 +13,9 @@ import style from './ProductsPage.module.scss';
 
 export const ProductsPage = () => {
   const [products, setProducts] = useState<IProducts[] | null>(null);
+  // const [filteredProducts, setFilteredProducts] = useState<IProducts[] | null>(
+  //   null
+  // );
 
   const { pathname } = useLocation();
   const { categoryName } = useParams();
@@ -30,8 +33,8 @@ export const ProductsPage = () => {
 
   return (
     <Container>
-      <Sorting />
       <h2 className={style.titleCategory}>{categoryName}</h2>
+      <Sorting />
       <ul className={style.productsList}>
         {products &&
           products.map((product) => {
