@@ -26,6 +26,32 @@ interface Props {
   typeSort?: string;
 }
 
+const sortByName = (array: IProducts[], typeSort?: string) =>
+  array.sort((a, b) => a.productName.localeCompare(b.productName));
+
+const sortByPrice = (array: IProducts[], typeSort: string) => {
+  if (typeSort === PRICE_HIGH_TO_LOW) {
+    return array.sort((a, b): any => b.price - a.price);
+  }
+  if (typeSort === PRICE_LOW_TO_HIGH) {
+    return array.sort((a, b): any => a.price - b.price);
+  }
+  if (typeSort === NUMBER_OF_PIECES) {
+    return array.sort((a, b): any => a.chunks - b.chunks);
+  }
+};
+
+const sorting = (currentProducts: IProducts[], typeSort: string) => {
+  if (typeSort === BY_NAME) {
+    const result = sortByName(currentProducts);
+    return result;
+  }
+  if (typeSort === PRICE_LOW_TO_HIGH || PRICE_HIGH_TO_LOW || NUMBER_OF_PIECES) {
+    const result = sortByPrice(currentProducts, typeSort);
+    return result;
+  }
+};
+
 export const ProductsPage = () => {
   const { pathname } = useLocation();
   const { categoryName } = useParams();
@@ -38,57 +64,35 @@ export const ProductsPage = () => {
   );
 
   const [sortType, setSortType] = useLocalStorage('sortType', DEFAULT);
-
-  const [products, setProducts] = useState<IProducts[] | null>(currentProducts);
-  const [filteredProducts, setFilteredProducts] = useState<IProducts[] | null>(
-    null
+  const [products, setProducts] = useLocalStorage(
+    'products',
+    JSON.stringify(currentProducts)
   );
 
-  const sortByName = (array: IProducts[], typeSort?: string) =>
-    array.sort((a, b) => a.productName.localeCompare(b.productName));
+  // const sortProducts = sorting(currentProducts, sortType);
+  // if (sortProducts) setProducts(sortProducts);
 
-  const sortByPrice = (array: IProducts[], typeSort: string) => {
-    if (typeSort === PRICE_HIGH_TO_LOW) {
-      return array.sort((a, b): any => b.price - a.price);
-    }
-    if (typeSort === PRICE_LOW_TO_HIGH) {
-      return array.sort((a, b): any => a.price - b.price);
-    }
-    if (typeSort === NUMBER_OF_PIECES) {
-      return array.sort((a, b): any => a.chunks - b.chunks);
-    }
+  const onChangeSortType = (value: string) => {
+    setSortType(value);
   };
 
-  const sorting = (currentProducts: IProducts[], typeSort: string) => {
-    if (typeSort === BY_NAME) {
-      const result = sortByName(currentProducts);
-      return result;
-    }
-    if (
-      typeSort === PRICE_LOW_TO_HIGH ||
-      PRICE_HIGH_TO_LOW ||
-      NUMBER_OF_PIECES
-    ) {
-      const result = sortByPrice(currentProducts, typeSort);
-      return result;
-    }
-  };
-  // console.log(sortType);
+  useEffect(() => {
+    setProducts(JSON.stringify(currentProducts));
 
-  sorting(currentProducts, sortType);
-
-  // useEffect(() => {
-  // setFilteredProducts(products);
-  // console.log(sortType);
-  // }, [sortType]);
+    // const sortProducts = sorting(currentProducts, sortType);
+    // if (sortProducts) setProducts(sortProducts);
+    // setProducts('products', currentProducts);
+    // console.log('second render products', sortProducts);
+    // console.log(sortType);
+  }, [sortType]);
 
   return (
     <Container>
       <h2 className={style.titleCategory}>{categoryName}</h2>
-      <Sorting />
+      <Sorting onChangeSortType={onChangeSortType} sortType={sortType} />
       <ul className={style.productsList}>
-        {currentProducts &&
-          currentProducts.map((filteredProducts) => {
+        {JSON.parse(products) &&
+          JSON.parse(products).map((filteredProducts: IProducts) => {
             const {
               productId,
               productName,

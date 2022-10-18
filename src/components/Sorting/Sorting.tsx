@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useLocalStorage } from '../../Hooks';
+// import { useState, useEffect } from 'react';
+// import { useLocalStorage } from '../../Hooks';
 
 import {
   styled,
@@ -11,7 +11,7 @@ import {
   FormControl,
   InputLabel,
 } from '@mui/material';
-import { IProducts } from '../../interfaces/goods.interface';
+// import { IProducts } from '../../interfaces/goods.interface';
 
 import { typesSort } from '../../goods';
 
@@ -40,11 +40,9 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const Sorting = () => {
-  const [sortTypes, setSortTypes] = useLocalStorage('sortType', DEFAULT);
-
+export const Sorting = ({ onChangeSortType, sortType }: any) => {
   const handleChange = (event: SelectChangeEvent) => {
-    setSortTypes(event.target.value);
+    onChangeSortType(event.target.value);
   };
 
   return (
@@ -55,7 +53,7 @@ export const Sorting = () => {
         </InputLabel>
         <Select
           // className={style.select}
-          value={sortTypes}
+          value={sortType}
           labelId="demo-simple-select-error-label"
           label="Sorting"
           autoWidth

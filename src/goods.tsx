@@ -185,7 +185,7 @@ export const beckEnd: IBeckEnd = {
       categoryId: '2',
       weight: 1320,
       chunks: 30,
-      price: 120,
+      price: 122,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1ht9YY.6-Philadelphia-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1htjBD.6-Philadelphia-set2x.jpg',
@@ -209,7 +209,7 @@ export const beckEnd: IBeckEnd = {
       categoryId: '2',
       weight: 1200,
       chunks: 52,
-      price: 120,
+      price: 115,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
@@ -221,7 +221,7 @@ export const beckEnd: IBeckEnd = {
       categoryId: '2',
       weight: 1270,
       chunks: 50,
-      price: 120,
+      price: 119,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1htvaz.yakuza-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1htJA6.yakuza-set2x.jpg',
