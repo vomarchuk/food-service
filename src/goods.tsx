@@ -5,7 +5,7 @@ export const typesSort: ITypesSort = {
   BY_NAME: 'By name',
   PRICE_LOW_TO_HIGH: 'Price: low to high',
   PRICE_HIGH_TO_LOW: 'Price: high to low',
-  NUMBER_OF_PRICES: 'Number of prices',
+  NUMBER_OF_PIECES: 'Number of pieces',
   WEIGHT: 'Weight',
 };
 
@@ -129,7 +129,7 @@ export const beckEnd: IBeckEnd = {
       categoryId: '2',
       weight: 1050,
       chunks: 30,
-      price: 1550,
+      price: 155,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/21/1Lg3ND.salmon-set.jpg',
         x2: 'https://i.im.ge/2022/09/21/1LgYV4.salmon-set2x.jpg',
@@ -244,7 +244,7 @@ export const beckEnd: IBeckEnd = {
       productName: 'Diabolo',
       categoryId: '1',
       weight: 41,
-      chunks: null,
+      chunks: 1,
       price: 50,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
@@ -256,7 +256,7 @@ export const beckEnd: IBeckEnd = {
       productName: 'Hawaii',
       categoryId: '1',
       weight: 41,
-      chunks: null,
+      chunks: 1,
       price: 48,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
@@ -268,7 +268,7 @@ export const beckEnd: IBeckEnd = {
       productName: 'Pepperoni',
       categoryId: '1',
       weight: 41,
-      chunks: null,
+      chunks: 1,
       price: 48,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
@@ -280,7 +280,7 @@ export const beckEnd: IBeckEnd = {
       productName: 'Vegetarian Pizza',
       categoryId: '1',
       weight: 41,
-      chunks: null,
+      chunks: 1,
       price: 53,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
@@ -292,7 +292,7 @@ export const beckEnd: IBeckEnd = {
       productName: 'Carbonara',
       categoryId: '1',
       weight: 41,
-      chunks: null,
+      chunks: 1,
       price: 54,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
@@ -304,7 +304,7 @@ export const beckEnd: IBeckEnd = {
       productName: 'Margarita',
       categoryId: '1',
       weight: 41,
-      chunks: null,
+      chunks: 1,
       price: 45,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',

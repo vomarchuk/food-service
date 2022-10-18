@@ -7,7 +7,7 @@ export interface ITypesSort {
   BY_NAME: string;
   PRICE_LOW_TO_HIGH: string;
   PRICE_HIGH_TO_LOW: string;
-  NUMBER_OF_PRICES: string;
+  NUMBER_OF_PIECES: string;
   WEIGHT: string;
 }
 
@@ -24,7 +24,7 @@ export interface IProducts {
   productName: string;
   categoryId: string;
   weight: number;
-  chunks: number | null;
+  chunks: number;
   price: number;
   smallImage: IImage;
   largeImage?: IImage;

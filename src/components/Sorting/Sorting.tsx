@@ -1,4 +1,5 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { useLocalStorage } from '../../Hooks';
 
 import {
   styled,
@@ -7,9 +8,11 @@ import {
   MenuItem,
   SelectChangeEvent,
   InputBase,
+  FormControl,
+  InputLabel,
 } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
+import { IProducts } from '../../interfaces/goods.interface';
+
 import { typesSort } from '../../goods';
 
 import style from './Sorting.module.scss';
@@ -19,7 +22,8 @@ const {
   BY_NAME,
   PRICE_LOW_TO_HIGH,
   PRICE_HIGH_TO_LOW,
-  NUMBER_OF_PRICES,
+  NUMBER_OF_PIECES,
+
   WEIGHT,
 } = typesSort;
 
@@ -37,13 +41,10 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Sorting = () => {
-  const [sortType, setSortType] = React.useState(DEFAULT);
-  console.log(sortType);
+  const [sortTypes, setSortTypes] = useLocalStorage('sortType', DEFAULT);
 
   const handleChange = (event: SelectChangeEvent) => {
-    console.log('hello');
-
-    setSortType(event.target.value);
+    setSortTypes(event.target.value);
   };
 
   return (
@@ -54,7 +55,7 @@ export const Sorting = () => {
         </InputLabel>
         <Select
           // className={style.select}
-          value={sortType}
+          value={sortTypes}
           labelId="demo-simple-select-error-label"
           label="Sorting"
           autoWidth
@@ -65,7 +66,7 @@ export const Sorting = () => {
           <MenuItem value={BY_NAME}>{BY_NAME}</MenuItem>
           <MenuItem value={PRICE_LOW_TO_HIGH}>{PRICE_LOW_TO_HIGH}</MenuItem>
           <MenuItem value={PRICE_HIGH_TO_LOW}>{PRICE_HIGH_TO_LOW}</MenuItem>
-          <MenuItem value={NUMBER_OF_PRICES}>{NUMBER_OF_PRICES}</MenuItem>
+          <MenuItem value={NUMBER_OF_PIECES}>{NUMBER_OF_PIECES}</MenuItem>
           <MenuItem value={WEIGHT}>{WEIGHT}</MenuItem>
         </Select>
       </FormControl>
