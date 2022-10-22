@@ -21,36 +21,35 @@ const {
   WEIGHT,
 } = typesSort;
 
-interface Props {
-  array: IProducts[];
-  typeSort?: string;
-}
+const sortProduct = (goods: IProducts[], typeSort: string) => {
+  switch (typeSort) {
+    case BY_NAME:
+      return goods.sort((a, b) => a.productName.localeCompare(b.productName));
 
-const sortByName = (array: IProducts[], typeSort?: string) =>
-  array.sort((a, b) => a.productName.localeCompare(b.productName));
+    case PRICE_LOW_TO_HIGH:
+      return goods.sort((a, b) => a.price - b.price);
 
-const sortByPrice = (array: IProducts[], typeSort: string) => {
-  if (typeSort === PRICE_HIGH_TO_LOW) {
-    return array.sort((a, b): any => b.price - a.price);
-  }
-  if (typeSort === PRICE_LOW_TO_HIGH) {
-    return array.sort((a, b): any => a.price - b.price);
-  }
-  if (typeSort === NUMBER_OF_PIECES) {
-    return array.sort((a, b): any => a.chunks - b.chunks);
+    case PRICE_HIGH_TO_LOW:
+      return goods.sort((a, b) => b.price - a.price);
+
+    case NUMBER_OF_PIECES:
+      return goods.sort((a, b) => a.chunks - b.chunks);
+
+    default:
+      console.log(typeSort);
   }
 };
 
-const sorting = (currentProducts: IProducts[], typeSort: string) => {
-  if (typeSort === BY_NAME) {
-    const result = sortByName(currentProducts);
-    return result;
-  }
-  if (typeSort === PRICE_LOW_TO_HIGH || PRICE_HIGH_TO_LOW || NUMBER_OF_PIECES) {
-    const result = sortByPrice(currentProducts, typeSort);
-    return result;
-  }
-};
+// const sorting = (currentProducts: IProducts[], typeSort: string) => {
+//   if (typeSort === BY_NAME) {
+//     const result = sortByName(currentProducts);
+//     return result;
+//   }
+//   if (typeSort === PRICE_LOW_TO_HIGH || PRICE_HIGH_TO_LOW || NUMBER_OF_PIECES) {
+//     const result = sortByPrice(currentProducts, typeSort);
+//     return result;
+//   }
+// };
 
 export const ProductsPage = () => {
   const { pathname } = useLocation();
@@ -69,6 +68,14 @@ export const ProductsPage = () => {
     JSON.stringify(currentProducts)
   );
 
+  //
+  // sortProduct(currentProducts, BY_NAME);
+
+  const x = sortProduct(currentProducts, PRICE_HIGH_TO_LOW);
+
+  console.log(x);
+
+  //
   // const sortProducts = sorting(currentProducts, sortType);
   // if (sortProducts) setProducts(sortProducts);
 
