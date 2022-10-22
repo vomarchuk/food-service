@@ -1,6 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import { useLocalStorage } from '../../Hooks';
-
 import {
   styled,
   Box,
@@ -11,10 +8,7 @@ import {
   FormControl,
   InputLabel,
 } from '@mui/material';
-// import { IProducts } from '../../interfaces/goods.interface';
-
 import { typesSort } from '../../goods';
-
 import style from './Sorting.module.scss';
 
 const {
@@ -52,7 +46,6 @@ export const Sorting = ({ onChangeSortType, sortType }: any) => {
           Sorting
         </InputLabel>
         <Select
-          // className={style.select}
           value={sortType}
           labelId="demo-simple-select-error-label"
           label="Sorting"

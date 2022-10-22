@@ -1,55 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocalStorage } from '../../Hooks';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { Container } from '../../components/Container';
 import { Sorting } from '../../components/Sorting';
-import { IProducts } from '../../interfaces/goods.interface';
-import { beckEnd } from '../../goods';
+
 import { colors } from '../../constants';
 import { Button } from '@mui/material';
 
+import { sortProduct } from '../../helpers';
+import { beckEnd } from '../../goods';
+import { IProducts } from '../../interfaces/goods.interface';
 import { typesSort } from '../../goods';
 
 import style from './ProductsPage.module.scss';
-const {
-  DEFAULT,
-  BY_NAME,
-  PRICE_LOW_TO_HIGH,
-  PRICE_HIGH_TO_LOW,
-  NUMBER_OF_PIECES,
-  WEIGHT,
-} = typesSort;
-
-const sortProduct = (goods: IProducts[], typeSort: string) => {
-  switch (typeSort) {
-    case BY_NAME:
-      return goods.sort((a, b) => a.productName.localeCompare(b.productName));
-
-    case PRICE_LOW_TO_HIGH:
-      return goods.sort((a, b) => a.price - b.price);
-
-    case PRICE_HIGH_TO_LOW:
-      return goods.sort((a, b) => b.price - a.price);
-
-    case NUMBER_OF_PIECES:
-      return goods.sort((a, b) => a.chunks - b.chunks);
-
-    default:
-      console.log(typeSort);
-  }
-};
-
-// const sorting = (currentProducts: IProducts[], typeSort: string) => {
-//   if (typeSort === BY_NAME) {
-//     const result = sortByName(currentProducts);
-//     return result;
-//   }
-//   if (typeSort === PRICE_LOW_TO_HIGH || PRICE_HIGH_TO_LOW || NUMBER_OF_PIECES) {
-//     const result = sortByPrice(currentProducts, typeSort);
-//     return result;
-//   }
-// };
+const { DEFAULT } = typesSort;
 
 export const ProductsPage = () => {
   const { pathname } = useLocation();
@@ -68,16 +33,7 @@ export const ProductsPage = () => {
     JSON.stringify(currentProducts)
   );
 
-  //
-  // sortProduct(currentProducts, BY_NAME);
-
-  const x = sortProduct(currentProducts, PRICE_HIGH_TO_LOW);
-
-  console.log(x);
-
-  //
-  // const sortProducts = sorting(currentProducts, sortType);
-  // if (sortProducts) setProducts(sortProducts);
+  const result = sortProduct(JSON.parse(products), sortType);
 
   const onChangeSortType = (value: string) => {
     setSortType(value);
@@ -85,12 +41,6 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     setProducts(JSON.stringify(currentProducts));
-
-    // const sortProducts = sorting(currentProducts, sortType);
-    // if (sortProducts) setProducts(sortProducts);
-    // setProducts('products', currentProducts);
-    // console.log('second render products', sortProducts);
-    // console.log(sortType);
   }, [sortType]);
 
   return (
@@ -98,8 +48,8 @@ export const ProductsPage = () => {
       <h2 className={style.titleCategory}>{categoryName}</h2>
       <Sorting onChangeSortType={onChangeSortType} sortType={sortType} />
       <ul className={style.productsList}>
-        {JSON.parse(products) &&
-          JSON.parse(products).map((filteredProducts: IProducts) => {
+        {result &&
+          result.map((filteredProducts: IProducts) => {
             const {
               productId,
               productName,
