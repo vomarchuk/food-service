@@ -1,27 +1,24 @@
 import { useEffect, useState } from 'react';
+import { useLocalStorage } from '../../Hooks';
 import { useParams } from 'react-router-dom';
 import { IProducts } from '../../interfaces/goods.interface';
 import { Container } from '../../components/Container';
 
 import { Button } from '@mui/material';
-import { beckEnd } from '../../goods';
 
 import { colors } from '../../constants';
 import style from './CardPage.module.scss';
 
 export const CardPage = () => {
+  const [products, setProducts] = useLocalStorage('products', '');
   const [card, setCard] = useState<IProducts | undefined | null>(null);
-  const { categoryName, productId } = useParams();
+  const { productId } = useParams();
 
   useEffect(() => {
-    const currentCategory = beckEnd.categories.find(
-      (c) => c.categoryName === categoryName
+    const currentProductById = JSON.parse(products).find(
+      (p: IProducts) => p.productId === productId
     );
-    setCard(
-      beckEnd.products
-        .filter((p) => p.categoryId === currentCategory?.categoryId)
-        .find((p) => p.productId === productId)
-    );
+    setCard(currentProductById);
   }, []);
 
   return (
