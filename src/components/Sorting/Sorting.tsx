@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { typesSort } from '../../goods';
 import style from './Sorting.module.scss';
+import { colors } from '../../constants';
 
 const {
   DEFAULT,
@@ -29,7 +30,7 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
     border: 'none',
     fontSize: '24px',
     padding: '10px 26px 0px 12px',
-    color: 'tomato',
+    color: colors.MAIN_ACCENT_COLOR,
     fontFamily: 'DIN Pro',
   },
 }));

@@ -8,7 +8,7 @@ import { Sorting } from '../../components/Sorting';
 import { colors } from '../../constants';
 import { Button } from '@mui/material';
 
-import { sortProduct } from '../../helpers';
+import { sortProduct, getCurrentProductsCategory } from '../../helpers';
 import { beckEnd } from '../../goods';
 import { IProducts } from '../../interfaces/goods.interface';
 import { typesSort } from '../../goods';
@@ -20,17 +20,14 @@ export const ProductsPage = () => {
   const { pathname } = useLocation();
   const { categoryName } = useParams();
 
-  const currentCategory = beckEnd.categories.find(
-    (c) => c.categoryName === categoryName
+  const CurrentProductsCategory = getCurrentProductsCategory(
+    beckEnd,
+    categoryName
   );
-  const currentProducts = beckEnd.products.filter(
-    (p) => p.categoryId === currentCategory?.categoryId
-  );
-
   const [sortType, setSortType] = useLocalStorage('sortType', DEFAULT);
   const [products, setProducts] = useLocalStorage(
     'products',
-    JSON.stringify(currentProducts)
+    JSON.stringify(CurrentProductsCategory)
   );
 
   const result = sortProduct(JSON.parse(products), sortType);
@@ -40,7 +37,7 @@ export const ProductsPage = () => {
   };
 
   useEffect(() => {
-    setProducts(JSON.stringify(currentProducts));
+    setProducts(JSON.stringify(CurrentProductsCategory));
   }, [sortType]);
 
   return (
