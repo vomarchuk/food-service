@@ -10,7 +10,7 @@ import { colors } from '../../constants';
 import style from './CardPage.module.scss';
 
 export const CardPage = () => {
-  const [products, setProducts] = useLocalStorage('products', '');
+  const [products] = useLocalStorage('products', '');
   const [card, setCard] = useState<IProducts | undefined | null>(null);
   const { productId } = useParams();
 
@@ -19,7 +19,7 @@ export const CardPage = () => {
       (p: IProducts) => p.productId === productId
     );
     setCard(currentProductById);
-  }, []);
+  }, [productId, products]);
 
   return (
     <Container>

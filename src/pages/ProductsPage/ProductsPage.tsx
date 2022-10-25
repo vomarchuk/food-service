@@ -50,7 +50,6 @@ export const ProductsPage = () => {
             const {
               productId,
               productName,
-              // categoryId,
               weight,
               chunks,
               price,

@@ -20,13 +20,10 @@ export const CartPage = () => {
   const [duration, setDuration] = useState<any>(null);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const originRef = useRef<any | undefined>();
-  // originRef.current.value = '52.252692 21.0336633';
-  /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef<any | undefined>();
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyDULHU7YeW9Tj_j6c57bpLw3snpA0rL5Y0',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '',
     libraries: ['places'],
   });
 
@@ -55,13 +52,12 @@ export const CartPage = () => {
     setDirectionsResponse(results);
   }
 
-  const clearRoute = () => {
-    setDirectionsResponse(null);
-    setDistance(null);
-    setDuration(null);
-    originRef.current.value = '';
-    destinationRef.current.value = '';
-  };
+  // const clearRoute = () => {
+  //   setDirectionsResponse(null);
+  //   setDistance(null);
+  //   setDuration(null);
+  //   destinationRef.current.value = '';
+  // };
 
   return (
     <Container>
@@ -97,9 +93,6 @@ export const CartPage = () => {
           </GoogleMap>
         </Box>
         <Box>
-          {/* <Autocomplete>
-            <input type="text" placeholder="Origin" ref={originRef} />
-          </Autocomplete> */}
           <Autocomplete>
             <input type="text" placeholder="Destination" ref={destinationRef} />
           </Autocomplete>
