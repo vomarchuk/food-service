@@ -1,5 +1,5 @@
 import { Container } from '../../components/Container';
-
+import { EmptyCart } from '../../components/EmptyCart';
 import { Box, Skeleton } from '@mui/material';
 
 import {
@@ -18,10 +18,6 @@ export const CartPage = () => {
   const [directionsResponse, setDirectionsResponse] = useState<any>(null);
   const [distance, setDistance] = useState<any>(null);
   const [duration, setDuration] = useState<any>(null);
-
-  console.log(map);
-  console.log(distance);
-  console.log(duration);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef<any | undefined>();
@@ -64,47 +60,52 @@ export const CartPage = () => {
   // };
 
   return (
-    <Container>
-      <Box position="relative">
-        <h2>Your shopping cart is empty.</h2>
-        <p>Add something faster!</p>
-        <p>Free delivery from 100 zl</p>
-
-        <Box
-          // position="absolute"
-          width="100%"
-          height="100%"
-          zIndex="modal"
-        >
-          {/* {Google Maps Box} */}
-          <GoogleMap
-            center={ourCoordinates}
-            zoom={15}
-            mapContainerStyle={{ width: '100%', height: '300px' }}
-            options={{
-              zoomControl: false,
-              streetViewControl: false,
-              mapTypeControl: false,
-              fullscreenControl: false,
-            }}
-            onLoad={(map: any) => setMap(map)}
+    <>
+      <Container>
+        <EmptyCart />
+      </Container>
+      <Container>
+        <Box position="relative">
+          <Box
+            // position="absolute"
+            width="100%"
+            height="100%"
+            zIndex="modal"
           >
-            <Marker position={ourCoordinates} />
+            {/* {Google Maps Box} */}
+            <GoogleMap
+              center={ourCoordinates}
+              zoom={15}
+              mapContainerStyle={{ width: '100%', height: '300px' }}
+              options={{
+                zoomControl: false,
+                streetViewControl: false,
+                mapTypeControl: false,
+                fullscreenControl: false,
+              }}
+              onLoad={(map: any) => setMap(map)}
+            >
+              <Marker position={ourCoordinates} />
 
-            {directionsResponse && (
-              <DirectionsRenderer directions={directionsResponse} />
-            )}
-          </GoogleMap>
+              {directionsResponse && (
+                <DirectionsRenderer directions={directionsResponse} />
+              )}
+            </GoogleMap>
+          </Box>
+          <Box>
+            <Autocomplete>
+              <input
+                type="text"
+                placeholder="Destination"
+                ref={destinationRef}
+              />
+            </Autocomplete>
+            <button type="button" onClick={calculateRoute}>
+              Click
+            </button>
+          </Box>
         </Box>
-        <Box>
-          <Autocomplete>
-            <input type="text" placeholder="Destination" ref={destinationRef} />
-          </Autocomplete>
-          <button type="button" onClick={calculateRoute}>
-            Click
-          </button>
-        </Box>
-      </Box>
-    </Container>
+      </Container>
+    </>
   );
 };
