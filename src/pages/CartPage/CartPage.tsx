@@ -19,6 +19,10 @@ export const CartPage = () => {
   const [distance, setDistance] = useState<any>(null);
   const [duration, setDuration] = useState<any>(null);
 
+  console.log(map);
+  console.log(distance);
+  console.log(duration);
+
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef<any | undefined>();
 
