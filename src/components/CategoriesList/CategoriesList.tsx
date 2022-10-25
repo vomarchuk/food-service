@@ -1,10 +1,21 @@
+import { useState, useEffect } from 'react';
+
 import { Grid } from '@mui/material';
 
 import { beckEnd } from '../../goods';
 import { CardMenu } from '../CardMenu';
+import { SkeletonCardMenu } from '../Skeleton';
 // import style from './CategoriesList.module.scss';
 
 export const CategoriesList = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <Grid
       sx={styles.forGrid}
@@ -21,16 +32,29 @@ export const CategoriesList = () => {
           soon,
           doubleCard,
         } = category;
+
         return (
-          <CardMenu
+          <Grid
             key={`${categoryId}-${categoryName}`}
-            categoryId={categoryId}
-            categoryName={categoryName}
-            smallImage={smallImage}
-            fullName={fullName}
-            soon={soon}
-            doubleCard={doubleCard}
-          />
+            item
+            xs={doubleCard ? 12 : 6}
+            container
+            spacing={0}
+          >
+            {isLoading ? (
+              <SkeletonCardMenu />
+            ) : (
+              <CardMenu
+                key={`${categoryId}-${categoryName}`}
+                categoryId={categoryId}
+                categoryName={categoryName}
+                smallImage={smallImage}
+                fullName={fullName}
+                soon={soon}
+                doubleCard={doubleCard}
+              />
+            )}
+          </Grid>
         );
       })}
     </Grid>

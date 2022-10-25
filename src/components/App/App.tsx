@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HomePage, ProductsPage, CardPage } from '../../pages';
+import { HomePage, ProductsPage, CardPage, CartPage } from '../../pages';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
@@ -15,6 +15,7 @@ const App = () => {
             path="category/:categoryName/:productId"
             element={<CardPage />}
           />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />
