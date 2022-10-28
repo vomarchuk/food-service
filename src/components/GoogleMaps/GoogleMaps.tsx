@@ -1,4 +1,4 @@
-import { Container } from '../../components/Container';
+// import { Container } from '../../components/Container';
 
 import { useRef, useState } from 'react';
 
@@ -11,19 +11,24 @@ import {
   DirectionsRenderer,
 } from '@react-google-maps/api';
 
-export const GoogleMaps = () => {
-  const ourCoordinates = { lat: 52.252692, lng: 21.0336633 };
+interface IGoogleMaps {
+  getInfo?: boolean;
+}
 
+export const GoogleMaps = ({ getInfo }: IGoogleMaps) => {
+  const ourCoordinates = { lat: 52.252692, lng: 21.0336633 };
+  const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
+
   const [directionsResponse, setDirectionsResponse] = useState<any>(null);
   const [distance, setDistance] = useState<any>(null);
   const [duration, setDuration] = useState<any>(null);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const destinationRef = useRef<any | undefined>();
+  const destinationRef = useRef<any>();
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '',
+    googleMapsApiKey: GOOGLE_MAP_KEY,
     libraries: ['places'],
   });
 
@@ -43,6 +48,7 @@ export const GoogleMaps = () => {
       destination: destinationRef.current.value,
       travelMode: google.maps.TravelMode.DRIVING,
     });
+
     setDistance(results.routes[0].legs[0].distance?.text);
     setDuration(results.routes[0].legs[0].duration?.text);
     setDirectionsResponse(results);
@@ -57,9 +63,10 @@ export const GoogleMaps = () => {
         zIndex="modal"
       >
         {/* {Google Maps Box} */}
+
         <GoogleMap
           center={ourCoordinates}
-          zoom={15}
+          zoom={16}
           mapContainerStyle={{ width: '100%', height: '300px' }}
           options={{
             zoomControl: false,
@@ -76,14 +83,16 @@ export const GoogleMaps = () => {
           )}
         </GoogleMap>
       </Box>
-      <Box>
-        <Autocomplete>
-          <input type="text" placeholder="Destination" ref={destinationRef} />
-        </Autocomplete>
-        <button type="button" onClick={calculateRoute}>
-          Click
-        </button>
-      </Box>
+      {getInfo && (
+        <Box>
+          <Autocomplete>
+            <input type="text" placeholder="Destination" ref={destinationRef} />
+          </Autocomplete>
+          <button type="button" onClick={calculateRoute}>
+            Click
+          </button>
+        </Box>
+      )}
     </Box>
   );
 };
