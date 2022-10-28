@@ -1,5 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HomePage, ProductsPage, CardPage, CartPage } from '../../pages';
+import {
+  HomePage,
+  ProductsPage,
+  CardPage,
+  CartPage,
+  CheckoutPage,
+} from '../../pages';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
@@ -16,6 +22,7 @@ const App = () => {
             element={<CardPage />}
           />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />

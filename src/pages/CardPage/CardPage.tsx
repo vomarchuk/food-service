@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { IProducts } from '../../interfaces/goods.interface';
 import { Container } from '../../components/Container';
 
-import { Button } from '@mui/material';
+import { CustomButton } from '../../components/CustomButton';
 
 import { colors } from '../../constants';
 import style from './CardPage.module.scss';
@@ -38,9 +38,7 @@ export const CardPage = () => {
           </p>
           <div className={style.wrapper}>
             <p className={style.price}>{card.price} zl</p>
-            <Button variant="contained" type="button" sx={styles.forButton}>
-              I want!
-            </Button>
+            <CustomButton text="I want!" style={styles.forButton} />
           </div>
         </div>
       )}

@@ -1,0 +1,12 @@
+@import '../../../styles/shared.scss';
+
+.markerIcon {
+  width: 60px;
+  height: 60px;
+  background-image: url('/images/icons/marker.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border-radius: 50%;
+  background-color: $main-accent-color;
+}
