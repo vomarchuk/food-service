@@ -11,10 +11,6 @@ export const EmptyCart = () => {
       <p className={style.text}>Add something faster!</p>
       <p className={style['text-accent']}>Free delivery from 100 zl</p>
 
-      <Box>
-        <input type="text" />
-      </Box>
-
       <Box className={style['Box-googleMaps']}>
         <GoogleMaps />
       </Box>

@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
 
-import { MarkerIcon } from '../Icons/MarkerIcon';
-import { CustomButton } from '../CustomButton';
+import { MarkerIcon, ClockIcon } from '../Icons';
 
-import { Box, Skeleton, IconButton } from '@mui/material';
+import { Box, Skeleton, IconButton, Button } from '@mui/material';
 import {
   useJsApiLoader,
   GoogleMap,
@@ -26,11 +25,16 @@ export const GoogleMaps = () => {
   const [getInfo, setGetInfo] = useState<any>(false);
 
   const handleChange = () => {
+    if (getInfo) {
+      return;
+    }
     setGetInfo(!getInfo);
   };
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef<any>();
+
+  // buttonTextRef.current.value = 'Make an order';
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAP_KEY,
@@ -67,52 +71,58 @@ export const GoogleMaps = () => {
   };
 
   return (
-    <>
-      <Box
-        position="relative"
-        // zIndex="modal"
+    <Box
+      position="relative"
+      // zIndex="modal"
+    >
+      <GoogleMap
+        center={ourCoordinates}
+        zoom={16}
+        mapContainerStyle={{ width: '100%', height: '300px' }}
+        options={{
+          zoomControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
+        }}
+        onLoad={(map: any) => setMap(map)}
       >
-        <GoogleMap
-          center={ourCoordinates}
-          zoom={16}
-          mapContainerStyle={{ width: '100%', height: '300px' }}
-          options={{
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            fullscreenControl: false,
-          }}
-          onLoad={(map: any) => setMap(map)}
-        >
-          <Marker position={ourCoordinates} />
-          {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
-          )}
-        </GoogleMap>
+        <Marker position={ourCoordinates} />
+        {directionsResponse && (
+          <DirectionsRenderer directions={directionsResponse} />
+        )}
+      </GoogleMap>
 
-        <IconButton
-          sx={styles.forIconButton}
-          onClick={() => map.panTo(ourCoordinates)}
-        >
-          <MarkerIcon />
-        </IconButton>
+      <IconButton
+        sx={styles.forIconButton}
+        onClick={() => map.panTo(ourCoordinates)}
+      >
+        <MarkerIcon />
+      </IconButton>
 
-        <h2 className={style.title}>Enter your address</h2>
-        <p className={style.text}>And know the delivery time</p>
-
-        <button type="button" onClick={handleChange}>
-          get more
-        </button>
-
-        {getInfo && (
+      {getInfo ? (
+        <>
           <Box>
-            <Autocomplete>
-              <input
-                type="text"
-                placeholder="Destination"
-                ref={destinationRef}
-              />
-            </Autocomplete>
+            <Box className={style['Box-destination']}>
+              <label className={style['destination__label']}>
+                Enter an address
+                <Autocomplete>
+                  <input
+                    className={style['destination__input']}
+                    type="text"
+                    placeholder="Destination"
+                    ref={destinationRef}
+                  />
+                </Autocomplete>
+              </label>
+              <Box className={style['destination__duration']}>
+                <ClockIcon />
+                <Box className={style['destination__text']}>
+                  <p>{duration || 'no destination'}</p>
+                  <p>Min. order - 50 zl</p>
+                </Box>
+              </Box>
+            </Box>
             <button type="button" onClick={calculateRoute}>
               Click
             </button>
@@ -120,14 +130,30 @@ export const GoogleMaps = () => {
               clear
             </button>
           </Box>
-        )}
-      </Box>
-      <CustomButton
-        text="Make an order"
-        style={styles.forButton}
-        // onClick={handleChange}
-      />
-    </>
+
+          <Button
+            sx={styles.forButton}
+            variant="contained"
+            onClick={handleChange}
+          >
+            See menu
+          </Button>
+        </>
+      ) : (
+        <>
+          <h2 className={style.title}>Enter your address</h2>
+          <p className={style.text}>And know the delivery time</p>
+
+          <Button
+            sx={styles.forButton}
+            variant="contained"
+            onClick={handleChange}
+          >
+            Make an order
+          </Button>
+        </>
+      )}
+    </Box>
   );
 };
 

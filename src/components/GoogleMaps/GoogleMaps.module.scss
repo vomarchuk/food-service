@@ -7,9 +7,48 @@
 
 .text {
   margin-top: 10px;
-
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
   color: $secondary-color;
+}
+
+.Box-destination {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.destination__label {
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondary-color;
+  height: 40px;
+}
+
+.destination__input {
+  width: 100%;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  line-height: 17px;
+  color: $main-dark-color;
+}
+
+.destination__duration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 3px 0px;
+  color: $main-light-color;
+  background-color: $main-accent-color;
+
+  border-radius: 0 0px 5px 5px;
+}
+
+.destination__text {
+  margin-left: 9px;
+  font-size: 14px;
+  font-weight: 400;
 }
