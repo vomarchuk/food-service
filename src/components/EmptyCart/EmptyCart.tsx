@@ -3,7 +3,6 @@ import { GoogleMaps } from '../../components/GoogleMaps';
 import { CustomButton } from '../CustomButton';
 import { colors } from '../../constants';
 import style from './EmptyCart.module.scss';
-import { MarkerIcon } from '../Icons/MarkerIcon';
 
 export const EmptyCart = () => {
   return (
@@ -11,15 +10,19 @@ export const EmptyCart = () => {
       <h2 className={style.title}>Your shopping cart is empty.</h2>
       <p className={style.text}>Add something faster!</p>
       <p className={style['text-accent']}>Free delivery from 100 zl</p>
+
+      <Box>
+        <input type="text" />
+      </Box>
+
       <Box className={style['Box-googleMaps']}>
         <GoogleMaps />
-        <MarkerIcon />
       </Box>
-      <h2 className={style.title}>Enter your address</h2>
-      <p className={style.text}>And know the delivery time</p>
-      <Link href="/checkout" sx={styles.forLink}>
-        <CustomButton text="Make an order" style={styles.forButton} />
-      </Link>
+      {/* <h2 className={style.title}>Enter your address</h2> */}
+      {/* <p className={style.text}>And know the delivery time</p> */}
+      {/* <Link href="/checkout" sx={styles.forLink}> */}
+      {/* <CustomButton text="Make an order" style={styles.forButton} /> */}
+      {/* </Link> */}
     </Box>
   );
 };
