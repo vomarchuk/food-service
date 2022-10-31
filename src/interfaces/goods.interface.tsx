@@ -30,7 +30,15 @@ export interface IProducts {
   largeImage?: IImage;
 }
 
+export interface IReview {
+  id: string;
+  date: string;
+  name: string;
+  description: string;
+}
+
 export interface IBeckEnd {
   categories: ICategories[];
   products: IProducts[];
+  reviews: IReview[];
 }

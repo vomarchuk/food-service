@@ -1,6 +1,5 @@
-import { Box, Link } from '@mui/material';
+import { Box } from '@mui/material';
 import { GoogleMaps } from '../../components/GoogleMaps';
-import { CustomButton } from '../CustomButton';
 import { colors } from '../../constants';
 import style from './EmptyCart.module.scss';
 
@@ -14,28 +13,23 @@ export const EmptyCart = () => {
       <Box className={style['Box-googleMaps']}>
         <GoogleMaps />
       </Box>
-      {/* <h2 className={style.title}>Enter your address</h2> */}
-      {/* <p className={style.text}>And know the delivery time</p> */}
-      {/* <Link href="/checkout" sx={styles.forLink}> */}
-      {/* <CustomButton text="Make an order" style={styles.forButton} /> */}
-      {/* </Link> */}
     </Box>
   );
 };
 
-const styles = {
-  forButton: {
-    marginTop: '20px',
-    textTransform: 'none',
-    backgroundColor: colors.ACTIVE_ACCENT_COLOR,
-    color: colors.SECONDARY_LIGHT_COLOR,
-    padding: '5px 65px',
-    fontSize: '20px',
-    '&:hover': {
-      backgroundColor: colors.MAIN_ACCENT_COLOR,
-    },
-  },
-  forLink: {
-    textDecoration: 'none',
-  },
-};
+// const styles = {
+//   forButton: {
+//     marginTop: '20px',
+//     textTransform: 'none',
+//     backgroundColor: colors.ACTIVE_ACCENT_COLOR,
+//     color: colors.SECONDARY_LIGHT_COLOR,
+//     padding: '5px 65px',
+//     fontSize: '20px',
+//     '&:hover': {
+//       backgroundColor: colors.MAIN_ACCENT_COLOR,
+//     },
+//   },
+//   forLink: {
+//     textDecoration: 'none',
+//   },
+// };

@@ -312,4 +312,34 @@ export const beckEnd: IBeckEnd = {
       },
     },
   ],
+  reviews: [
+    {
+      id: '1',
+      date: '02.10.22',
+      name: 'Margarita',
+      description:
+        'Your delivery and your meals are the best in Warsaw! ) always very tasty, on time, always politely couriers and girls by phone',
+    },
+    {
+      id: '2',
+      date: '13.06.22',
+      name: 'Kasper',
+      description:
+        'Your delivery and your meals are the best in Warsaw! ) always very tasty, on time, always politely couriers and girls by phone',
+    },
+    {
+      id: '3',
+      date: '22.05.22',
+      name: 'Tomek',
+      description:
+        'Your delivery and your meals are the best in Warsaw! ) always very tasty, on time, always politely couriers and girls by phone',
+    },
+    {
+      id: '4',
+      date: '12.11.21',
+      name: 'Monika',
+      description:
+        'Your delivery and your meals are the best in Warsaw! ) always very tasty, on time, always politely couriers and girls by phone',
+    },
+  ],
 };

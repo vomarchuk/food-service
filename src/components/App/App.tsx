@@ -5,6 +5,7 @@ import {
   CardPage,
   CartPage,
   CheckoutPage,
+  FeedbackPage,
 } from '../../pages';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
@@ -23,6 +24,7 @@ const App = () => {
           />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />

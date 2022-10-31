@@ -22,7 +22,7 @@ export const GoogleMaps = () => {
   const [directionsResponse, setDirectionsResponse] = useState<any>(null);
   const [distance, setDistance] = useState<any>('');
   const [duration, setDuration] = useState<any>('');
-  const [getInfo, setGetInfo] = useState<any>(false);
+  const [getInfo, setGetInfo] = useState<boolean>(false);
 
   const handleChange = () => {
     if (getInfo) {
