@@ -1,12 +1,8 @@
 import { Box } from '@mui/material';
-import { IReview } from '../../interfaces/goods.interface';
 
 import style from './ReviewItem.module.scss';
 
-type Props = {
-  review: IReview;
-};
-export const ReviewItem = ({ review }: Props) => {
+export const ReviewItem = ({ review }) => {
   return (
     <Box key={review.id} sx={styles.forBox}>
       <p className={style.name}>

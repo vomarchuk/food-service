@@ -3,7 +3,6 @@ import {
   Box,
   Select,
   MenuItem,
-  SelectChangeEvent,
   InputBase,
   FormControl,
   InputLabel,
@@ -35,8 +34,8 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const Sorting = ({ onChangeSortType, sortType }: any) => {
-  const handleChange = (event: SelectChangeEvent) => {
+export const Sorting = ({ onChangeSortType, sortType }) => {
+  const handleChange = (event) => {
     onChangeSortType(event.target.value);
   };
 

@@ -10,7 +10,6 @@ import { Button } from '@mui/material';
 
 import { sortProduct, getCurrentProductsCategory } from '../../helpers';
 import { beckEnd } from '../../goods';
-import { IProducts } from '../../interfaces/goods.interface';
 import { typesSort } from '../../goods';
 
 import style from './ProductsPage.module.scss';
@@ -32,7 +31,7 @@ export const ProductsPage = () => {
 
   const result = sortProduct(JSON.parse(products), sortType);
 
-  const onChangeSortType = (value: string) => {
+  const onChangeSortType = (value) => {
     setSortType(value);
   };
 
@@ -46,7 +45,7 @@ export const ProductsPage = () => {
       <Sorting onChangeSortType={onChangeSortType} sortType={sortType} />
       <ul className={style.productsList}>
         {result &&
-          result.map((filteredProducts: IProducts) => {
+          result.map((filteredProducts) => {
             const {
               productId,
               productName,

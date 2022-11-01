@@ -1,11 +1,6 @@
 import { ReviewItem } from '../ReviewItem';
-import { IReview } from '../../interfaces/goods.interface';
 
-interface IReviews {
-  reviews: IReview[];
-}
-
-export const ReviewsList = ({ reviews }: IReviews) => {
+export const ReviewsList = ({ reviews }) => {
   return (
     <>
       {reviews.map((review) => (

@@ -4,7 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import { useState } from 'react';
 
-import { colors } from '../../constants';
+import { colors } from '../../../constants';
 
 import style from './FooterDescription.module.scss';
 

@@ -1,6 +1,6 @@
 export * from './HomePage';
 export * from './ProductsPage';
-export * from './CardPage';
+export * from './ProductPage';
 export * from './CartPage';
 export * from './CheckoutPage';
 export * from './FeedbackPage';

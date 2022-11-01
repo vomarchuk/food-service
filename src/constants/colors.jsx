@@ -1,8 +1,4 @@
-type Colors = {
-  [key: string]: string;
-};
-
-export const colors: Colors = {
+export const colors = {
   PRIMARY_COLOR: '#000000',
   SECONDARY_COLOR: '#A4ACAD',
   MAIN_ACCENT_COLOR: '#ff9846',

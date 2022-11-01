@@ -2,9 +2,9 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 
-import { MenuIcon, CartIcon, FeedBackIcon } from '../Icons';
+import { MenuIcon, CartIcon, FeedBackIcon } from '../../Icons';
 
-import { colors } from '../../constants';
+import { colors } from '../../../constants';
 
 import style from './FooterNav.module.scss';
 export const FooterNav = () => {

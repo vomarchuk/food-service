@@ -1,6 +1,4 @@
-import { IBeckEnd, ITypesSort } from './interfaces/goods.interface';
-
-export const typesSort: ITypesSort = {
+export const typesSort = {
   DEFAULT: 'By default',
   BY_NAME: 'By name',
   PRICE_LOW_TO_HIGH: 'Price: low to high',
@@ -9,7 +7,7 @@ export const typesSort: ITypesSort = {
   WEIGHT: 'Weight',
 };
 
-export const beckEnd: IBeckEnd = {
+export const beckEnd = {
   categories: [
     {
       categoryId: '1',
@@ -306,6 +304,18 @@ export const beckEnd: IBeckEnd = {
       weight: 41,
       chunks: 1,
       price: 45,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
+    {
+      productId: '1',
+      productName: 'Philadelphia',
+      categoryId: '4',
+      weight: 41,
+      chunks: 1,
+      price: 50,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',

@@ -17,10 +17,7 @@ import style from './Header.module.scss';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const getValueForSearch = (
-    evt: React.SyntheticEvent<Element, Event>,
-    value: Product | null
-  ) => {
+  const getValueForSearch = (evt, value) => {
     console.log(value?.label);
   };
   const handleClick = () => setIsOpen(true);
@@ -92,10 +89,7 @@ export const Header = () => {
   );
 };
 
-interface Product {
-  label: string;
-}
-const products: Product[] = [{ label: 'sushi1' }, { label: 'sushi2' }];
+const products = [{ label: 'sushi1' }, { label: 'sushi2' }];
 
 const CustomTextField = styled(TextField)({
   '& label.Mui-focused': {

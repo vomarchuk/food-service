@@ -1,4 +1,3 @@
-import { IProducts } from '../interfaces/goods.interface';
 import { typesSort } from '../goods';
 
 const {
@@ -9,7 +8,7 @@ const {
   WEIGHT,
 } = typesSort;
 
-export const sortProduct = (goods: IProducts[], typeSort: string) => {
+export const sortProduct = (goods, typeSort) => {
   switch (typeSort) {
     case BY_NAME:
       return goods.sort((a, b) => a.productName.localeCompare(b.productName));

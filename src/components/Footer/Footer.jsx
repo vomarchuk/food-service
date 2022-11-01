@@ -1,7 +1,7 @@
 import { Container } from '../Container';
-import { FooterContacts } from '../FooterContacts';
-import { FooterDescription } from '../FooterDescription';
-import { FooterNav } from '../FooterNav';
+import { FooterContacts } from './FooterContacts';
+import { FooterDescription } from './FooterDescription';
+import { FooterNav } from './FooterNav';
 
 import style from './Footer.module.scss';
 

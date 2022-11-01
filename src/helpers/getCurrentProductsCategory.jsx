@@ -1,9 +1,4 @@
-import { IBeckEnd } from '../interfaces/goods.interface';
-
-export const getCurrentProductsCategory = (
-  array: IBeckEnd,
-  currentCategoryName: string | undefined
-) => {
+export const getCurrentProductsCategory = (array, currentCategoryName) => {
   const currentCategory = array.categories.find(
     (c) => c.categoryName === currentCategoryName
   );

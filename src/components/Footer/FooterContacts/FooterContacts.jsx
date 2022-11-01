@@ -1,8 +1,8 @@
 import { Box, Link } from '@mui/material';
 
-import { WhatsappIcon, TelegramIcon, InstagramIcon } from '../Icons';
+import { WhatsappIcon, TelegramIcon, InstagramIcon } from '../../Icons';
 
-import { colors } from '../../constants';
+import { colors } from '../../../constants';
 
 import style from './FooterContacts.module.scss';
 export const FooterContacts = () => {
