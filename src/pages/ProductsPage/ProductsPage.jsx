@@ -9,7 +9,7 @@ import { colors } from '../../constants';
 import { Button } from '@mui/material';
 
 import { sortProduct, getCurrentProductsCategory } from '../../helpers';
-import { beckEnd } from '../../goods';
+import { backEnd } from '../../goods';
 import { typesSort } from '../../goods';
 
 import style from './ProductsPage.module.scss';
@@ -20,7 +20,7 @@ export const ProductsPage = () => {
   const { categoryName } = useParams();
 
   const CurrentProductsCategory = getCurrentProductsCategory(
-    beckEnd,
+    backEnd,
     categoryName
   );
   const [sortType, setSortType] = useLocalStorage('sortType', DEFAULT);

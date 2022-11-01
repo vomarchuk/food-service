@@ -1,0 +1,87 @@
+@import '../../styles/shared.scss';
+
+.checkout {
+  padding-top: 11px;
+  padding-bottom: 42px;
+  text-align: center;
+}
+
+.form {
+  padding-top: 10px;
+}
+
+.field {
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 9px;
+  border-radius: 5px;
+  border: none;
+  background-color: $main-light-color;
+
+
+  &::placeholder {
+    color: $secondary-color;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $main-accent-color;
+  }
+}
+
+.fullField {
+  @extend .field;
+  width: 330px;
+}
+
+.halfField {
+  @extend .field;
+  width: 160px;
+}
+
+.halfFieldLeft {
+  @extend .halfField;
+  margin-right: 10px;
+}
+
+
+
+.radioButtonBox {
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.radioButtonBox input[type='radio'] {
+  display: none;
+}
+
+.radioButtonBox label {
+  display: flex;
+  width: 165px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-light-color;
+
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  color: $main-dark-color;
+
+  cursor: pointer;
+
+}
+
+.radioButtonItem:first-child label {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.radioButtonItem:last-child label {
+  border-radius: 0px 5px 5px 0px;
+}
+
+
+.radioButtonBox input[type='radio']:checked+label {
+  background: $main-accent-color;
+  color: $main-light-color;
+}

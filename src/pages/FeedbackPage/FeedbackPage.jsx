@@ -1,6 +1,6 @@
 import { Formik, Form, Field, FormikHelpers, useField } from 'formik';
 import { useState } from 'react';
-import { beckEnd } from '../../goods';
+import { backEnd } from '../../goods';
 
 import { Button, Modal, Box } from '@mui/material';
 import { Container } from '../../components/Container';
@@ -13,7 +13,7 @@ import style from './FeedbackPage.module.scss';
 export const FeedbackPage = () => {
   const [open, setOpen] = useState(false);
 
-  const reviews = beckEnd.reviews;
+  const reviews = backEnd.reviews;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { Grid } from '@mui/material';
 
-import { beckEnd } from '../../goods';
+import { backEnd } from '../../goods';
 import { CardMenu } from '../CardMenu';
 import { SkeletonCardMenu } from '../Skeleton';
 // import style from './CategoriesList.module.scss';
@@ -23,7 +23,7 @@ export const CategoriesList = () => {
       spacing={1}
       justifyContent="space-between"
     >
-      {beckEnd.categories.map((category) => {
+      {backEnd.categories.map((category) => {
         const {
           categoryId,
           categoryName,

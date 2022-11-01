@@ -7,7 +7,7 @@ export const typesSort = {
   WEIGHT: 'Weight',
 };
 
-export const beckEnd = {
+export const backEnd = {
   categories: [
     {
       categoryId: '1',
@@ -153,12 +153,17 @@ export const beckEnd = {
       productId: '3',
       productName: '5 Philadelphia set',
       categoryId: '2',
+      compositionId: ['4-1', '4-1'],
       weight: 1120,
       chunks: 40,
       price: 115,
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1LK4CP.5-Philadelphia-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1LKBv1.5-Philadelphia-set2x.jpg',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/23/1hfszX.salmon-set3.jpg',
+        x2: 'https://i.im.ge/2022/09/23/1hf7F8.salmon-set4.jpg',
       },
     },
     {
@@ -310,7 +315,7 @@ export const beckEnd = {
       },
     },
     {
-      productId: '1',
+      productId: '4-1',
       productName: 'Philadelphia',
       categoryId: '4',
       weight: 41,
