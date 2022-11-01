@@ -1,10 +1,11 @@
 import { Container } from '../../components/Container';
 import { Title } from '../../components/Title';
-import { Box, FormControlLabel } from '@mui/material';
+import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 
 import { checkoutOptions } from '../../constants';
 
+import { colors } from '../../constants';
 import style from './CheckoutPage.module.scss';
 
 export const CheckoutPage = () => {
@@ -24,11 +25,15 @@ export const CheckoutPage = () => {
     timeMethod: checkoutOptions.TIME_METHOD.NOW,
   };
 
+  const formikOnSubmit = (values) => {
+    console.log(values);
+  };
+
   return (
     <section className={style.checkout}>
       <Container>
         <Title text="Your data" />
-        <Formik initialValues={initialValues}>
+        <Formik initialValues={initialValues} onSubmit={formikOnSubmit}>
           <Form className={style.form}>
             <Field
               id="firstName"
@@ -172,9 +177,27 @@ export const CheckoutPage = () => {
                 </label>
               </div>
             </div>
+            <Button variant="contained" sx={styles.forButton} type="submit">
+              Send
+            </Button>
           </Form>
         </Formik>
       </Container>
     </section>
   );
+};
+
+const styles = {
+  forButton: {
+    mt: '20px',
+    minWidth: '330px',
+    textTransform: 'none',
+    backgroundColor: colors.ACTIVE_ACCENT_COLOR,
+    color: colors.SECONDARY_LIGHT_COLOR,
+    padding: '5px 65px',
+    fontSize: '20px',
+    '&:hover': {
+      backgroundColor: colors.MAIN_ACCENT_COLOR,
+    },
+  },
 };
