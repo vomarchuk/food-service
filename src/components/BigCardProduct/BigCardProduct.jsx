@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 
 import { Container } from '../Container';
-
+import { Title } from '../Title';
 import { colors } from '../../constants';
 import style from './BigCardProduct.module.scss';
 
@@ -18,7 +18,7 @@ export const BigCardProduct = ({ product }) => {
           alt={`${productName}`}
           width="300px"
         />
-        <h2 className={style.title}>{productName}</h2>
+        <Title text={productName} />
         <p className={style.text}>
           {weight} grams, {chunks} chunks
         </p>

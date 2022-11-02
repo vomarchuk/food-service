@@ -19,6 +19,13 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '2',
@@ -30,6 +37,14 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        NUMBER_OF_PIECES: 'Number of pieces',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '3',
@@ -41,6 +56,13 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '4',
@@ -52,6 +74,14 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        NUMBER_OF_PIECES: 'Number of pieces',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '5',
@@ -63,6 +93,14 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        NUMBER_OF_PIECES: 'Number of pieces',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '6',
@@ -74,6 +112,13 @@ export const backEnd = {
       },
       soon: true,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '7',
@@ -85,6 +130,13 @@ export const backEnd = {
       },
       soon: true,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '8',
@@ -96,6 +148,13 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '10',
@@ -107,6 +166,14 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: false,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        NUMBER_OF_PIECES: 'Number of pieces',
+        WEIGHT: 'Weight',
+      },
     },
     {
       categoryId: '9',
@@ -118,6 +185,13 @@ export const backEnd = {
       },
       soon: false,
       doubleCard: true,
+      typesSort: {
+        DEFAULT: 'By default',
+        BY_NAME: 'By name',
+        PRICE_LOW_TO_HIGH: 'Price: low to high',
+        PRICE_HIGH_TO_LOW: 'Price: high to low',
+        WEIGHT: 'Weight',
+      },
     },
   ],
   products: [
@@ -230,18 +304,6 @@ export const backEnd = {
         x2: 'https://i.im.ge/2022/09/22/1htJA6.yakuza-set2x.jpg',
       },
     },
-    // {
-    //   productId: '',
-    //   productName: '',
-    //   categoryId: '',
-    //   weight: 0,
-    //   chunks: 0,
-    //   price: 0,
-    //   smallImage: {
-    //     x1: '',
-    //     x2: '',
-    //   },
-    // },
     {
       productId: '1',
       productName: 'Diabolo',

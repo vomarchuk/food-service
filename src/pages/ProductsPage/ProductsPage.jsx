@@ -13,11 +13,20 @@ import { backEnd } from '../../goods';
 import { typesSort } from '../../goods';
 
 import style from './ProductsPage.module.scss';
+////////////////////////////////////////////////////////////////
+import { addProduct } from '../../redux/cart/actions';
+import { useSelector, useDispatch } from 'react-redux';
 const { DEFAULT } = typesSort;
+
+const getProduct = (product) => {
+  return console.log(product);
+};
 
 export const ProductsPage = () => {
   const { pathname } = useLocation();
   const { categoryName } = useParams();
+
+  const productsInCart = useSelector((state) => state.products);
 
   const CurrentProductsCategory = getCurrentProductsCategory(
     backEnd,
@@ -31,8 +40,15 @@ export const ProductsPage = () => {
 
   const result = sortProduct(JSON.parse(products), sortType);
 
+  const dispatch = useDispatch();
   const onChangeSortType = (value) => {
     setSortType(value);
+  };
+
+  console.log(productsInCart);
+  const handleClick = (product) => {
+    // getProduct(product);
+    dispatch(addProduct(product));
   };
 
   useEffect(() => {
@@ -41,7 +57,7 @@ export const ProductsPage = () => {
 
   return (
     <Container>
-      <h2 className={style.titleCategory}>{categoryName}</h2>
+      <h1 className={style.titleCategory}>{categoryName}</h1>
       <Sorting onChangeSortType={onChangeSortType} sortType={sortType} />
       <ul className={style.productsList}>
         {result &&
@@ -84,7 +100,7 @@ export const ProductsPage = () => {
                       variant="contained"
                       type="button"
                       sx={styles.forButton}
-                      // onClick={handleClick}
+                      onClick={() => handleClick(filteredProducts)}
                     >
                       I want!
                     </Button>
