@@ -9,24 +9,16 @@ import { colors } from '../../constants';
 import { Button } from '@mui/material';
 
 import { sortProduct, getCurrentProductsCategory } from '../../helpers';
-import { backEnd } from '../../goods';
-import { typesSort } from '../../goods';
+import { backEnd, typesSort } from '../../goods';
 
 import style from './ProductsPage.module.scss';
 ////////////////////////////////////////////////////////////////
-import { addProduct } from '../../redux/cart/actions';
-import { useSelector, useDispatch } from 'react-redux';
-const { DEFAULT } = typesSort;
 
-const getProduct = (product) => {
-  return console.log(product);
-};
+const { DEFAULT } = typesSort;
 
 export const ProductsPage = () => {
   const { pathname } = useLocation();
   const { categoryName } = useParams();
-
-  const productsInCart = useSelector((state) => state.products);
 
   const CurrentProductsCategory = getCurrentProductsCategory(
     backEnd,
@@ -40,15 +32,12 @@ export const ProductsPage = () => {
 
   const result = sortProduct(JSON.parse(products), sortType);
 
-  const dispatch = useDispatch();
   const onChangeSortType = (value) => {
     setSortType(value);
   };
 
-  console.log(productsInCart);
   const handleClick = (product) => {
-    // getProduct(product);
-    dispatch(addProduct(product));
+    console.log(product);
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@ export const CardMenu = ({ categoryName, fullName, smallImage, soon }) => {
         src={smallImage.x1}
         alt={fullName}
         srcSet={`${smallImage.x1} 1x,
-                ${smallImage.x2}2x `}
+        ${smallImage.x2}2x `}
       />
       <Box>
         <h2 className={style.cardTitle}>{fullName}</h2>

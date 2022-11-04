@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 
 import { MenuIcon, CartIcon, FeedBackIcon } from '../../Icons';
 
@@ -11,17 +12,14 @@ export const FooterNav = () => {
   return (
     <Box sx={styles.forBox}>
       <Stack direction="row" sx={styles.forBottomNav}>
-        <Link sx={styles.forLink} className={style.bottomNavLink} href="/">
+        <Link className={style.bottomNavLink} to="/">
           <MenuIcon /> <p className={style.navText}>Menu</p>
         </Link>
-        <Link sx={styles.forLink} className={style.bottomNavLink} href="/cart">
+        <Link className={style.bottomNavLink} to="/cart">
           <CartIcon /> <p className={style.navText}>Cart</p>
         </Link>
-        <Link
-          sx={styles.forLink}
-          className={style.bottomNavLink}
-          href="/feedback"
-        >
+
+        <Link className={style.bottomNavLink} to="/feedback">
           <FeedBackIcon /> <p className={style.navText}>FeedBack</p>
         </Link>
       </Stack>

@@ -1,13 +1,9 @@
 import { useState } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
-import {
-  Autocomplete,
-  TextField,
-  IconButton,
-  styled,
-  Link,
-} from '@mui/material';
+import { Autocomplete, TextField, IconButton, styled } from '@mui/material';
+
+import { Link } from 'react-router-dom';
 
 import { Container } from '../Container';
 import { Logotype } from '../Logotype';
@@ -28,9 +24,10 @@ export const Header = () => {
       <header className={style.header}>
         <Container>
           <div className={style.headerWrapper}>
-            <Link href="/">
+            <Link to="/">
               <Logotype />
             </Link>
+
             <div className={style.headerContacts}>
               <p className={style.headerText}>Our phones</p>
               <a className={style.headerPhone} href="tel:+996705188955">

@@ -13,8 +13,8 @@ import { Footer } from '../Footer';
 const App = () => {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="category/:categoryName" element={<ProductsPage />} />
@@ -26,8 +26,8 @@ const App = () => {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 };
