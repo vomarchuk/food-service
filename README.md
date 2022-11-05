@@ -2,4 +2,4 @@
 
 Used packages :
 
-[react-toastify](https://fkhadra.github.io/react-toastify/introduction) : library for non-blocking notifications
+[react-toastify](https://github.com/fkhadra/react-toastify) : library for non-blocking notifications
