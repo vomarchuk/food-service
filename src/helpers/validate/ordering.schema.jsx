@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const OrderingSchema = Yup.object().shape({
   firstName: Yup.string().min(2, 'Too Short').max(20, 'Too Long'),
-  lastName: Yup.string().min(2),
+  lastName: Yup.string().min(2, 'Too Short').max(20, 'Too Long'),
   deliveryMethod: Yup.string(),
   street: Yup.string(),
   house: Yup.string(),

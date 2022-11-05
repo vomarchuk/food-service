@@ -12,7 +12,6 @@ import style from './CheckoutPage.module.scss';
 import { OrderingSchema } from '../../helpers/validate/ordering.schema';
 
 export const CheckoutPage = () => {
-  console.log(OrderingSchema);
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -39,6 +38,9 @@ export const CheckoutPage = () => {
     return error;
   };
 
+  const isValid = (error, className) =>
+    `${style[`${className}`]}  ${error && style['is-Not-Valid']}`;
+
   const formikOnSubmit = (values) => {
     console.log(values);
   };
@@ -47,6 +49,7 @@ export const CheckoutPage = () => {
     <section className={style.checkout}>
       <Container>
         <Title text="Your data" />
+
         <Formik
           initialValues={initialValues}
           validationSchema={OrderingSchema}
@@ -58,17 +61,15 @@ export const CheckoutPage = () => {
                 id="firstName"
                 name="firstName"
                 placeholder="First name"
-                className={style.halfFieldLeft}
+                className={isValid(errors.firstName, 'halfFieldLeft')}
               />
-              {errors.firstName && touched.firstName ? (
-                <div>{errors.firstName}</div>
-              ) : null}
+
               <Field
                 id="lastName"
                 name="lastName"
-                placeholder="Last name"
-                className={style.halfField}
+                className={isValid(errors.lastName, 'halfField')}
               />
+
               <div className={style.radioButtonBox}>
                 <div className={style.radioButtonItem}>
                   <Field
