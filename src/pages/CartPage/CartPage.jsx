@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { Container } from '../../components/Container';
@@ -7,15 +8,25 @@ import { CartOfProducts } from '../../components/CartOfProducts';
 import { colors } from '../../constants';
 
 export const CartPage = () => {
+  const order = useSelector((state) => state.products);
+  if (order.length > 0) {
+    console.log(order);
+  }
+
   return (
     <Container>
-      {/* <EmptyCart /> */}
-      <CartOfProducts />
-      <Link sx={styles.forLink} to="/checkout">
-        <Button sx={styles.forButton} variant="contained">
-          Make an order
-        </Button>
-      </Link>
+      {order.length > 0 ? (
+        <CartOfProducts order={order} />
+      ) : (
+        <>
+          <EmptyCart />
+          <Link sx={styles.forLink} to="/checkout">
+            <Button sx={styles.forButton} variant="contained">
+              Make an order
+            </Button>
+          </Link>
+        </>
+      )}
     </Container>
   );
 };

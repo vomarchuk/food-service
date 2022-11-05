@@ -131,26 +131,26 @@ export const GoogleMaps = () => {
             </button>
           </Box>
 
-          <Button
+          {/* <Button
             sx={styles.forButton}
             variant="contained"
             onClick={handleChange}
           >
             See menu
-          </Button>
+          </Button> */}
         </>
       ) : (
         <>
           <h2 className={style.title}>Enter your address</h2>
           <p className={style.text}>And know the delivery time</p>
 
-          <Button
+          {/* <Button
             sx={styles.forButton}
             variant="contained"
             onClick={handleChange}
           >
             Make an order
-          </Button>
+          </Button> */}
         </>
       )}
     </Box>
