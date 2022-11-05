@@ -1,8 +1,16 @@
+import { useSelector } from 'react-redux';
+
 import { Box } from '@mui/material';
 import { Title } from '../Title';
 
 import style from './CartOfProducts.module.scss';
 export const CartOfProducts = () => {
+  const productsOfCart = useSelector((state) => state.products);
+  console.log(productsOfCart);
+
+  const totalAmount = productsOfCart.reduce((total, product) => {
+    console.log(total);
+  }, 0);
   return (
     <section className={style.cart}>
       <Title text="Cart" />
