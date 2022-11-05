@@ -67,6 +67,7 @@ export const CheckoutPage = () => {
               <Field
                 id="lastName"
                 name="lastName"
+                placeholder="Last name"
                 className={isValid(errors.lastName, 'halfField')}
               />
 

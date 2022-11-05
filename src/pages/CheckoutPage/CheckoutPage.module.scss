@@ -1,5 +1,10 @@
 @import '../../styles/shared.scss';
 
+input,
+select {
+  font-size: 100%;
+}
+
 .checkout {
   padding-top: 11px;
   padding-bottom: 42px;
