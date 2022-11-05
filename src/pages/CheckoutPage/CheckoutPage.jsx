@@ -11,6 +11,9 @@ import style from './CheckoutPage.module.scss';
 ////////////////////////////////////////////////////////////////
 import { OrderingSchema } from '../../helpers/validate/ordering.schema';
 
+// import { toast, ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
 export const CheckoutPage = () => {
   const initialValues = {
     firstName: '',
@@ -28,15 +31,13 @@ export const CheckoutPage = () => {
     timeMethod: checkoutOptions.TIME_METHOD.NOW,
   };
 
-  const validateEmail = (value) => {
-    let error;
-    if (!value) {
-      error = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-      error = 'Invalid email address';
-    }
-    return error;
-  };
+  // const notify = (value) => {
+  //   // toast('Default Notification !');
+
+  //   toast.warn('Warning Notification !', {
+  //     position: toast.POSITION.TOP_RIGHT,
+  //   });
+  // };
 
   const isValid = (error, className) =>
     `${style[`${className}`]}  ${error && style['is-Not-Valid']}`;
@@ -49,7 +50,6 @@ export const CheckoutPage = () => {
     <section className={style.checkout}>
       <Container>
         <Title text="Your data" />
-
         <Formik
           initialValues={initialValues}
           validationSchema={OrderingSchema}
@@ -57,6 +57,7 @@ export const CheckoutPage = () => {
         >
           {({ errors, touched }) => (
             <Form className={style.form}>
+              {/* {errors && touched ? console.log(errors) : null} */}
               <Field
                 id="firstName"
                 name="firstName"
@@ -103,19 +104,19 @@ export const CheckoutPage = () => {
                 id="street"
                 name="street"
                 placeholder="Street"
-                className={style.fullField}
+                className={isValid(errors.street, 'fullField')}
               />
               <Field
                 id="house"
                 name="house"
                 placeholder="House"
-                className={style.fullField}
+                className={isValid(errors.house, 'fullField')}
               />
               <Field
                 id="apartment"
                 name="apartment"
                 placeholder="Apartment"
-                className={style.halfFieldLeft}
+                className={isValid(errors.apartment, 'halfFieldLeft')}
               />
               <Field
                 id="entrance"
@@ -166,9 +167,8 @@ export const CheckoutPage = () => {
               <Field
                 id="email"
                 name="email"
-                validate={validateEmail}
                 placeholder="E-mail (not necessary)"
-                className={style.fullField}
+                className={isValid(errors.email, 'fullField')}
               />
               <Field
                 id="comment"
