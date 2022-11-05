@@ -12,24 +12,18 @@ import { backEnd } from '../../goods';
 
 import style from './ProductPage.module.scss';
 
-// console.log(beckEnd);
-
 export const ProductPage = () => {
   const [products] = useLocalStorage('products', '');
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
 
   const getCompositionProduct = (product) => {
-    // console.log(product);
     return product.compositionId.map((id) => {
       return backEnd.products.find((product) => {
         return product.productId === id;
       });
     });
   };
-  // if (product?.compositionId) {
-  //   ;
-  // }
 
   useEffect(() => {
     const currentProductById = JSON.parse(products).find(

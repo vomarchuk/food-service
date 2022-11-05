@@ -2,24 +2,7 @@ import { addProductInCart, removeProductInCart } from './actions';
 import { statusFilters } from './constants';
 import { combineReducers } from 'redux';
 
-const initialState = [
-  {
-    productId: '1',
-    productName: 'Salmon set',
-    categoryId: '2',
-    weight: 1050,
-    chunks: 30,
-    price: 155,
-    smallImage: {
-      x1: 'https://i.im.ge/2022/09/21/1Lg3ND.salmon-set.jpg',
-      x2: 'https://i.im.ge/2022/09/21/1LgYV4.salmon-set2x.jpg',
-    },
-    largeImage: {
-      x1: 'https://i.im.ge/2022/09/23/1hfszX.salmon-set3.jpg',
-      x2: 'https://i.im.ge/2022/09/23/1hf7F8.salmon-set4.jpg',
-    },
-  },
-];
+const initialState = [];
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {

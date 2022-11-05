@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
-import { GoogleMaps } from '../../GoogleMaps';
-import { colors } from '../../../constants';
+import { GoogleMaps } from '../GoogleMaps';
+import { colors } from '../../constants';
 import style from './EmptyCart.module.scss';
 
 export const EmptyCart = () => {

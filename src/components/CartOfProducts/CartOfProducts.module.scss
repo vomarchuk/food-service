@@ -1,0 +1,44 @@
+@import "../../styles/shared.scss";
+
+.cart {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.total__box {
+  padding: 10px 0px;
+  background-color: $main-light-color;
+  border-radius: 5px
+}
+
+.total__title {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  color: $main-accent-color;
+}
+
+.total__list {
+  margin-top: 10px;
+}
+
+.total__item {
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-around;
+
+  border-bottom: 1px solid $secondary-color;
+}
+
+
+.total__text {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  color: $primary-color;
+}
+
+.total__text--bold {
+  font-weight: 500;
+}

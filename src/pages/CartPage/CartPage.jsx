@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { Container } from '../../components/Container';
-import { EmptyCart } from '../../components/Footer/EmptyCart';
+import { EmptyCart } from '../../components/EmptyCart';
+import { CartOfProducts } from '../../components/CartOfProducts';
 
 import { colors } from '../../constants';
 
@@ -9,6 +10,7 @@ export const CartPage = () => {
   return (
     <Container>
       {/* <EmptyCart /> */}
+      <CartOfProducts />
       <Link sx={styles.forLink} to="/checkout">
         <Button sx={styles.forButton} variant="contained">
           Make an order

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocalStorage } from '../../Hooks';
 import { Link, useLocation, useParams } from 'react-router-dom';
-
+import { addProductInCart } from '../../redux/cart/actions';
 import { Container } from '../../components/Container';
 import { Sorting } from '../../components/Sorting';
 
@@ -19,6 +20,7 @@ const { DEFAULT } = typesSort;
 export const ProductsPage = () => {
   const { pathname } = useLocation();
   const { categoryName } = useParams();
+  const dispatch = useDispatch();
 
   const CurrentProductsCategory = getCurrentProductsCategory(
     backEnd,
@@ -37,7 +39,7 @@ export const ProductsPage = () => {
   };
 
   const handleClick = (product) => {
-    console.log(product);
+    dispatch(addProductInCart(product));
   };
 
   useEffect(() => {

@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { addProductInCart } from '../../redux/cart/actions';
+
 import { Button } from '@mui/material';
 
 import { Container } from '../Container';
@@ -5,19 +8,12 @@ import { Title } from '../Title';
 import { colors } from '../../constants';
 import style from './BigCardProduct.module.scss';
 
-////////////////////////////////////////////////////////////////
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { addProductInCart } from '../../redux/cart/actions';
-
 export const BigCardProduct = ({ product }) => {
   const { largeImage, productName, chunks, weight, price } = product;
 
   const dispatch = useDispatch();
-  const value = useSelector((state) => state);
-  console.log(value.products);
+
   const handleClick = () => {
-    console.log(product);
     dispatch(addProductInCart(product));
   };
 
@@ -44,7 +40,6 @@ export const BigCardProduct = ({ product }) => {
           >
             I want!
           </Button>
-          <Link to={`/`}>HELLO</Link>
         </div>
       </div>
     </Container>
