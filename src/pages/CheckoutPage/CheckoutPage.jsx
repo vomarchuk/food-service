@@ -1,49 +1,28 @@
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addDeliveryInfo } from '../../redux/delivery/actions';
 import { Container } from '../../components/Container';
 import { Title } from '../../components/Title';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 
-import { checkoutOptions } from '../../constants';
+import { checkoutOptions, colors } from '../../constants';
+import { deliveryInitialState } from '../../helpers';
 
-import { colors } from '../../constants';
 import style from './CheckoutPage.module.scss';
 
-////////////////////////////////////////////////////////////////
 import { OrderingSchema } from '../../helpers/validate/ordering.schema';
 
-// import { toast, ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
 export const CheckoutPage = () => {
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    deliveryMethod: checkoutOptions.DELIVERY_METHOD.COURIER,
-    street: '',
-    house: '',
-    apartment: '',
-    entrance: '',
-    floor: '',
-    code: '',
-    paymentMethod: checkoutOptions.PAY_METHOD.CASH,
-    email: '',
-    comment: '',
-    timeMethod: checkoutOptions.TIME_METHOD.NOW,
-  };
-
-  // const notify = (value) => {
-  //   // toast('Default Notification !');
-
-  //   toast.warn('Warning Notification !', {
-  //     position: toast.POSITION.TOP_RIGHT,
-  //   });
-  // };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const isValid = (error, className) =>
     `${style[`${className}`]}  ${error && style['is-Not-Valid']}`;
 
   const formikOnSubmit = (values) => {
-    console.log(values);
+    dispatch(addDeliveryInfo(values));
+    navigate('/cart', { replace: true });
   };
 
   return (
@@ -51,7 +30,7 @@ export const CheckoutPage = () => {
       <Container>
         <Title text="Your data" />
         <Formik
-          initialValues={initialValues}
+          initialValues={deliveryInitialState}
           validationSchema={OrderingSchema}
           onSubmit={formikOnSubmit}
         >
@@ -64,14 +43,12 @@ export const CheckoutPage = () => {
                 placeholder="First name"
                 className={isValid(errors.firstName, 'halfFieldLeft')}
               />
-
               <Field
                 id="lastName"
                 name="lastName"
                 placeholder="Last name"
                 className={isValid(errors.lastName, 'halfField')}
               />
-
               <div className={style.radioButtonBox}>
                 <div className={style.radioButtonItem}>
                   <Field
@@ -101,6 +78,12 @@ export const CheckoutPage = () => {
                 </div>
               </div>
               <Field
+                id="city"
+                name="city"
+                placeholder="city"
+                className={isValid(errors.city, 'fullField')}
+              />
+              <Field
                 id="street"
                 name="street"
                 placeholder="Street"
@@ -110,31 +93,13 @@ export const CheckoutPage = () => {
                 id="house"
                 name="house"
                 placeholder="House"
-                className={isValid(errors.house, 'fullField')}
+                className={isValid(errors.house, 'halfFieldLeft')}
               />
               <Field
                 id="apartment"
                 name="apartment"
                 placeholder="Apartment"
-                className={isValid(errors.apartment, 'halfFieldLeft')}
-              />
-              <Field
-                id="entrance"
-                name="entrance"
-                placeholder="Entrance"
-                className={style.halfField}
-              />
-              <Field
-                id="floor"
-                name="floor"
-                placeholder="Floor"
-                className={style.halfFieldLeft}
-              />
-              <Field
-                id="code"
-                name="code"
-                placeholder="Code"
-                className={style.halfField}
+                className={isValid(errors.apartment, 'halfField')}
               />
               <div className={style.radioButtonBox}>
                 <div className={style.radioButtonItem}>
@@ -204,6 +169,7 @@ export const CheckoutPage = () => {
                   </label>
                 </div>
               </div>
+
               <Button variant="contained" sx={styles.forButton} type="submit">
                 Send
               </Button>

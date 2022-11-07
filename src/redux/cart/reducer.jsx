@@ -1,18 +1,24 @@
+import { createReducer } from '@reduxjs/toolkit';
 import { addProductInCart, removeProductInCart } from './actions';
 import { statusFilters } from './constants';
-import { combineReducers } from 'redux';
+import { cartInitialState } from '../../helpers';
 
-const initialState = [];
-
-export const cartReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case addProductInCart.type: {
-      return [...state, action.payload];
-    }
-    default:
-      return state;
-  }
-};
+// export const cartReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case addProductInCart.type: {
+//       return [...state, action.payload];
+//     }
+//     default:
+//       return state;
+//   }
+// };
+export const cartReducer = createReducer(cartInitialState, {
+  [addProductInCart]: (state, action) => {
+    state.push(action.payload);
+  },
+  [removeProductInCart]: (state, action) =>
+    state.filter((product) => product.productId !== action.payload),
+});
 
 const filtersInitialState = {
   status: statusFilters.DEFAULT,
@@ -29,8 +35,3 @@ export const filtersReducer = (state = filtersInitialState, action) => {
       return state;
   }
 };
-
-export const rootReducer = combineReducers({
-  products: cartReducer,
-  filters: filtersReducer,
-});

@@ -1,28 +1,38 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { isObject } from '../../helpers';
 import { Container } from '../../components/Container';
 import { EmptyCart } from '../../components/EmptyCart';
+import { Maps } from '../../components/Maps/Maps';
 import { CartOfProducts } from '../../components/CartOfProducts';
 
 import { colors } from '../../constants';
 
+import style from './CartPage.module.scss';
+
 export const CartPage = () => {
   const order = useSelector((state) => state.products);
-  if (order.length > 0) {
-    console.log(order);
-  }
+  const delivery = useSelector((state) => state.delivery);
 
   return (
     <Container>
-      {order.length > 0 ? (
-        <CartOfProducts order={order} />
-      ) : (
+      {order.length === 0 ? <EmptyCart /> : <CartOfProducts order={order} />}
+      {!isObject(delivery) ? (
         <>
-          <EmptyCart />
+          <Maps mapSize="small" />
           <Link sx={styles.forLink} to="/checkout">
             <Button sx={styles.forButton} variant="contained">
               Make an order
+            </Button>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Maps mapSize="large" showDelivery={true} />
+          <Link sx={styles.forLink} to="/checkout">
+            <Button sx={styles.forButton} variant="contained">
+              See menu
             </Button>
           </Link>
         </>

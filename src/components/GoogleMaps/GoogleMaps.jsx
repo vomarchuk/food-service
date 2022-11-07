@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
 
 import { MarkerIcon, ClockIcon } from '../Icons';
@@ -11,34 +12,27 @@ import {
   DirectionsRenderer,
 } from '@react-google-maps/api';
 import { colors } from '../../constants';
-
+import { isObject } from '../../helpers';
 import style from './GoogleMaps.module.scss';
 
-export const GoogleMaps = () => {
+export const GoogleMaps = ({ mapHeight, showDelivery }) => {
   const ourCoordinates = { lat: 52.252692, lng: 21.0336633 };
   const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
-  const [map, setMap] = useState<any>(/** @type google.maps.Map */ null);
-
-  const [directionsResponse, setDirectionsResponse] = useState<any>(null);
-  const [distance, setDistance] = useState<any>('');
-  const [duration, setDuration] = useState<any>('');
-  const [getInfo, setGetInfo] = useState<boolean>(false);
-
-  const handleChange = () => {
-    if (getInfo) {
-      return;
-    }
-    setGetInfo(!getInfo);
-  };
+  const [map, setMap] = useState(/** @type google.maps.Map */ null);
+  const [directionsResponse, setDirectionsResponse] = useState(null);
+  const [distance, setDistance] = useState('');
+  const [duration, setDuration] = useState('');
+  const [libraries] = useState(['places']);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const destinationRef = useRef<any>();
+  const destinationRef = useRef();
+  const delivery = useSelector((state) => state.delivery);
 
   // buttonTextRef.current.value = 'Make an order';
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAP_KEY,
-    libraries: ['places'],
+    libraries,
   });
 
   if (!isLoaded) {
@@ -51,11 +45,12 @@ export const GoogleMaps = () => {
     if (destinationRef.current.value === '') {
       return;
     }
-    const directionsService = new google.maps.DirectionsService();
+    const directionsService = new window.google.maps.DirectionsService();
+
     const results = await directionsService.route({
       origin: coordinates,
       destination: destinationRef.current.value,
-      travelMode: google.maps.TravelMode.DRIVING,
+      travelMode: window.google.maps.TravelMode.DRIVING,
     });
 
     setDirectionsResponse(results);
@@ -69,7 +64,6 @@ export const GoogleMaps = () => {
     setDuration('');
     destinationRef.current.value = '';
   };
-
   return (
     <Box
       position="relative"
@@ -78,14 +72,14 @@ export const GoogleMaps = () => {
       <GoogleMap
         center={ourCoordinates}
         zoom={16}
-        mapContainerStyle={{ width: '100%', height: '300px' }}
+        mapContainerStyle={{ width: '100%', height: mapHeight }}
         options={{
           zoomControl: false,
           streetViewControl: false,
           mapTypeControl: false,
           fullscreenControl: false,
         }}
-        onLoad={(map: any) => setMap(map)}
+        onLoad={(map) => setMap(map)}
       >
         <Marker position={ourCoordinates} />
         {directionsResponse && (
@@ -100,7 +94,7 @@ export const GoogleMaps = () => {
         <MarkerIcon />
       </IconButton>
 
-      {getInfo ? (
+      {showDelivery ? (
         <>
           <Box>
             <Box className={style['Box-destination']}>
@@ -112,6 +106,11 @@ export const GoogleMaps = () => {
                     type="text"
                     placeholder="Destination"
                     ref={destinationRef}
+                    defaultValue={
+                      isObject(delivery)
+                        ? `${delivery.street} ${delivery.house}, ${delivery.city}, Poland`
+                        : ''
+                    }
                   />
                 </Autocomplete>
               </label>
@@ -130,27 +129,11 @@ export const GoogleMaps = () => {
               clear
             </button>
           </Box>
-
-          {/* <Button
-            sx={styles.forButton}
-            variant="contained"
-            onClick={handleChange}
-          >
-            See menu
-          </Button> */}
         </>
       ) : (
         <>
           <h2 className={style.title}>Enter your address</h2>
           <p className={style.text}>And know the delivery time</p>
-
-          {/* <Button
-            sx={styles.forButton}
-            variant="contained"
-            onClick={handleChange}
-          >
-            Make an order
-          </Button> */}
         </>
       )}
     </Box>

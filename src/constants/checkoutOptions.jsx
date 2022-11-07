@@ -1,4 +1,4 @@
-export const checkoutOptions = {
+export const checkoutOptions = Object.freeze({
   DELIVERY_METHOD: {
     COURIER: 'courier',
     PICKUP: 'pickup',
@@ -11,4 +11,4 @@ export const checkoutOptions = {
     NOW: 'now',
     AT_THE_TIME: 'atTheTime',
   },
-};
+});

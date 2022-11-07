@@ -11,14 +11,12 @@ export const OrderingSchema = Yup.object().shape({
     .max(20, 'Too Long')
     .matches(/^[a-zA-Z]+$/)
     .required(),
-  deliveryMethod: Yup.string().required(),
+  deliveryMethod: Yup.string(),
+  city: Yup.string().required(),
   street: Yup.string().required(),
   house: Yup.string().required(),
   apartment: Yup.string().required(),
-  entrance: Yup.string(),
-  floor: Yup.number(),
-  code: Yup.string(),
-  paymentMethod: Yup.string().required(),
+  paymentMethod: Yup.string(),
   email: Yup.string().email(),
   comment: Yup.string().min(10).max(100, 'Too Long'),
   timeMethod: Yup.string(),

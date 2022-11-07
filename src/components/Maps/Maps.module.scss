@@ -1,0 +1,17 @@
+@import '../../styles/shared.scss';
+
+
+.box-googleMaps {
+  margin-top: 26px;
+  text-align: center;
+}
+
+.text-accent {
+  // margin-top: 26px;
+  padding: 12px 0px;
+  margin-bottom: 20px;
+
+  background-color: $main-accent-color;
+  border-radius: 0px 0px 5px 5px;
+  color: $secondary-light-color;
+}
