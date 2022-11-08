@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addProductInCart,
+  updateProductInCart,
+} from '../../redux/cart/reducer';
 import { useLocalStorage } from '../../Hooks';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { addProductInCart } from '../../redux/cart/actions';
 import { Container } from '../../components/Container';
 import { Sorting } from '../../components/Sorting';
 
@@ -20,6 +23,8 @@ const { DEFAULT } = typesSort;
 export const ProductsPage = () => {
   const { pathname } = useLocation();
   const { categoryName } = useParams();
+  const productOfCart = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
 
   const CurrentProductsCategory = getCurrentProductsCategory(
@@ -38,8 +43,13 @@ export const ProductsPage = () => {
     setSortType(value);
   };
 
-  const handleClick = (product) => {
-    dispatch(addProductInCart(product));
+  const handleClick = (currentProduct) => {
+    const isDublicate = productOfCart.filter(
+      (product) => product.productId === currentProduct.productId
+    );
+    isDublicate.length === 0
+      ? dispatch(addProductInCart(currentProduct)) && console.log('add')
+      : dispatch(updateProductInCart(currentProduct)) && console.log('update');
   };
 
   useEffect(() => {
@@ -52,7 +62,7 @@ export const ProductsPage = () => {
       <Sorting onChangeSortType={onChangeSortType} sortType={sortType} />
       <ul className={style.productsList}>
         {result &&
-          result.map((filteredProducts) => {
+          result.map((filteredProduct) => {
             const {
               productId,
               productName,
@@ -60,7 +70,8 @@ export const ProductsPage = () => {
               chunks,
               price,
               smallImage,
-            } = filteredProducts;
+            } = filteredProduct;
+            const currentProduct = { ...filteredProduct, quantity: 1 };
 
             return (
               <li key={productId} className={style.productItem}>
@@ -91,7 +102,7 @@ export const ProductsPage = () => {
                       variant="contained"
                       type="button"
                       sx={styles.forButton}
-                      onClick={() => handleClick(filteredProducts)}
+                      onClick={() => handleClick(currentProduct)}
                     >
                       I want!
                     </Button>

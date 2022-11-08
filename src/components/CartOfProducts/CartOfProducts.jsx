@@ -1,31 +1,36 @@
+import { useDispatch } from 'react-redux';
+import { updateProductInCart } from '../../redux/cart/reducer';
 import { Box, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Title } from '../Title';
+import { Image } from '../Image';
 
 import { colors } from '../../constants';
 
 import style from './CartOfProducts.module.scss';
+
 export const CartOfProducts = ({ order }) => {
-  const totalOrder = order.length;
-  const totalAmount = order.reduce(
-    (total, product) => total + product.price,
-    0
-  );
+  const dispatch = useDispatch();
+  const totalOrder = order.reduce((total, product) => {
+    return (total += product.quantity);
+  }, 0);
+  const totalAmount = order.reduce((total, product) => {
+    return (total += product.price * product.quantity);
+  }, 0);
+
+  const handleClick = (product) => {
+    dispatch(updateProductInCart(product));
+  };
 
   return (
     <section className={style.cart}>
       <Title text="Cart" />
-      {order.map(({ productId, smallImage, productName }) => {
+      {order.map((product) => {
+        const { productId, smallImage, productName, quantity, price } = product;
         return (
           <div className={style['product']} key={productId}>
-            <img
-              key={productId}
-              src={smallImage.x1}
-              alt={productName}
-              width="90"
-              srcSet={`${smallImage.x1} 1x, ${smallImage.x2} 2x`}
-            />
+            <Image src={smallImage} alt={productName} width="90px" />
             <Box className={style['product__description']}>
               <p className={style['text']}>{productName}</p>
               <div className={style['wrapper']}>
@@ -36,16 +41,19 @@ export const CartOfProducts = ({ order }) => {
                   >
                     <RemoveIcon fontSize="inherit" />
                   </IconButton>
-                  <span>1</span>
+                  <span>{quantity}</span>
                   <IconButton
                     aria-label="add product"
                     sx={{ color: colors.ACTIVE_ACCENT_COLOR }}
+                    onClick={() => handleClick(product)}
                   >
                     <AddCircleIcon fontSize="inherit" />
                   </IconButton>
                 </Box>
 
-                <span className={style['product__summ']}>310 zl</span>
+                <span className={style['product__summ']}>
+                  {quantity * price} zl
+                </span>
               </div>
             </Box>
           </div>

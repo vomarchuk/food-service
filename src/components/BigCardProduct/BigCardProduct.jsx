@@ -1,32 +1,40 @@
-import { useDispatch } from 'react-redux';
-import { addProductInCart } from '../../redux/cart/actions';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  addProductInCart,
+  updateProductInCart,
+} from '../../redux/cart/reducer';
 
 import { Button } from '@mui/material';
 
 import { Container } from '../Container';
 import { Title } from '../Title';
+import { Image } from '../Image';
 import { colors } from '../../constants';
 import style from './BigCardProduct.module.scss';
 
 export const BigCardProduct = ({ product }) => {
+  const productOfCart = useSelector((state) => state.products);
   const { largeImage, productName, chunks, weight, price } = product;
+
+  const currentProduct = { ...product, quantity: 1 };
 
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(addProductInCart(product));
+    const isDublicate = productOfCart.filter(
+      (product) => product.productId === currentProduct.productId
+    );
+    isDublicate.length === 0
+      ? dispatch(addProductInCart(currentProduct)) && console.log('add')
+      : dispatch(updateProductInCart(currentProduct)) && console.log('update');
   };
 
   return (
     <Container>
       <div className={style.card}>
-        <img
-          src={largeImage.x1}
-          srcSet={`${largeImage.x1} 1x,
-        ${largeImage.x2} 2x`}
-          alt={`${productName}`}
-          width="300px"
-        />
+        <Image src={largeImage} alt={productName} width="300px" />
+
         <Title text={productName} />
         <p className={style.text}>
           {weight} grams, {chunks} chunks
