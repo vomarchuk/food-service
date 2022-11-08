@@ -5,7 +5,43 @@
   text-align: center;
 }
 
+.product {
+  display: flex;
+  padding: 13px 33px 13px 5px;
+  align-items: center;
+
+
+  background-color: $main-light-color;
+  border-radius: 5px;
+
+  &:not(:first-child) {
+    margin-top: 7px;
+  }
+}
+
+.product__description {
+  margin-left: 14px;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+}
+
+
+.amount__box {
+  display: flex;
+  align-items: center;
+}
+
+.product__summ {
+  padding-left: 20px;
+}
+
 .total__box {
+  margin-top: 10px;
   padding: 10px 0px;
   background-color: $main-light-color;
   border-radius: 5px
@@ -32,7 +68,7 @@
 }
 
 
-.total__text {
+.text {
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
