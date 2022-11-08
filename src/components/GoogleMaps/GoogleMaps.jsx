@@ -39,7 +39,7 @@ export const GoogleMaps = ({ mapHeight, showDelivery }) => {
     return <Skeleton />;
   }
 
-  async function calculateRoute() {
+  const calculateRoute = async () => {
     const coordinates = '52.252692 21.0336633';
 
     if (destinationRef.current.value === '') {
@@ -56,7 +56,7 @@ export const GoogleMaps = ({ mapHeight, showDelivery }) => {
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance?.text);
     setDuration(results.routes[0].legs[0].duration?.text);
-  }
+  };
 
   const clearRoute = () => {
     setDirectionsResponse(null);
@@ -64,6 +64,7 @@ export const GoogleMaps = ({ mapHeight, showDelivery }) => {
     setDuration('');
     destinationRef.current.value = '';
   };
+
   return (
     <Box
       position="relative"
@@ -108,7 +109,7 @@ export const GoogleMaps = ({ mapHeight, showDelivery }) => {
                     ref={destinationRef}
                     defaultValue={
                       isObject(delivery)
-                        ? `${delivery.street} ${delivery.house}, ${delivery.city}, Poland`
+                        ? `${delivery.street} ${delivery.house}, ${delivery.city} `
                         : ''
                     }
                   />
