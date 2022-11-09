@@ -1,5 +1,3 @@
-// import { createReducer } from '@reduxjs/toolkit';
-// import { addProductInCart, removeProductInCart } from './actions';
 import { statusFilters } from './constants';
 
 import { createSlice } from '@reduxjs/toolkit';
@@ -47,9 +45,24 @@ const cartSlice = createSlice({
     addProductInCart: (state, action) => {
       state.push(action.payload);
     },
+    removeProductInCart: (state, action) => {
+      // const index = state.findIndex(
+      //   (product) => product.productId === action.payload.productId
+      // );
+      // const product = state.find(
+      //   (product) => product.productId === action.payload.productId
+      // );
+
+      state.map((item) => {
+        if (item.productId === action.payload.productId && item.quantity > 1) {
+          return (item.quantity -= 1);
+        }
+        // console.log(product.quantity, product.productName);
+      });
+      // if ((product.quantity = 1)) state.filter(index, 1);
+    },
     updateProductInCart: (state, action) => {
       state.map((item) => {
-        console.log(item.productId, action.payload.productId);
         if (item.productId === action.payload.productId) {
           item.quantity += 1;
         }
@@ -64,5 +77,6 @@ const cartSlice = createSlice({
     // },
   },
 });
-export const { addProductInCart, updateProductInCart } = cartSlice.actions;
+export const { addProductInCart, removeProductInCart, updateProductInCart } =
+  cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

@@ -48,8 +48,8 @@ export const ProductsPage = () => {
       (product) => product.productId === currentProduct.productId
     );
     isDublicate.length === 0
-      ? dispatch(addProductInCart(currentProduct)) && console.log('add')
-      : dispatch(updateProductInCart(currentProduct)) && console.log('update');
+      ? dispatch(addProductInCart(currentProduct))
+      : dispatch(updateProductInCart(currentProduct));
   };
 
   useEffect(() => {

@@ -196,7 +196,7 @@ export const backEnd = {
   ],
   products: [
     {
-      productId: '1',
+      productId: '2-1',
       productName: 'Salmon set',
       categoryId: '2',
       weight: 1050,
@@ -212,7 +212,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '2',
+      productId: '2-2',
       productName: 'Philadelphia LOVE set',
       categoryId: '2',
       weight: 1000,
@@ -224,7 +224,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '3',
+      productId: '2-3',
       productName: '5 Philadelphia set',
       categoryId: '2',
       compositionId: ['4-1', '4-1'],
@@ -241,7 +241,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '4',
+      productId: '2-4',
       productName: 'Philadelphia and salmon set',
       categoryId: '2',
       weight: 1260,
@@ -257,7 +257,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '5',
+      productId: '2-5',
       productName: '6 Philadelphia set',
       categoryId: '2',
       weight: 1320,
@@ -269,7 +269,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '6',
+      productId: '2-6',
       productName: 'Top set',
       categoryId: '2',
       weight: 1020,
@@ -281,7 +281,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '7',
+      productId: '2-7',
       productName: 'Kamikaze set',
       categoryId: '2',
       weight: 1200,
@@ -293,7 +293,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '8',
+      productId: '2-8',
       productName: 'Yakuza set',
       categoryId: '2',
       weight: 1270,
@@ -305,7 +305,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '1',
+      productId: '1-1',
       productName: 'Diabolo',
       categoryId: '1',
       weight: 41,
@@ -317,7 +317,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '2',
+      productId: '1-2',
       productName: 'Hawaii',
       categoryId: '1',
       weight: 41,
@@ -329,7 +329,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '3',
+      productId: '1-3',
       productName: 'Pepperoni',
       categoryId: '1',
       weight: 41,
@@ -341,7 +341,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '4',
+      productId: '1-4',
       productName: 'Vegetarian Pizza',
       categoryId: '1',
       weight: 41,
@@ -353,7 +353,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '5',
+      productId: '1-5',
       productName: 'Carbonara',
       categoryId: '1',
       weight: 41,
@@ -365,7 +365,7 @@ export const backEnd = {
       },
     },
     {
-      productId: '6',
+      productId: '1-6',
       productName: 'Margarita',
       categoryId: '1',
       weight: 41,

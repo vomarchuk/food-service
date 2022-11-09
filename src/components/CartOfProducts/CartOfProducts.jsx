@@ -1,5 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { updateProductInCart } from '../../redux/cart/reducer';
+import {
+  updateProductInCart,
+  removeProductInCart,
+} from '../../redux/cart/reducer';
 import { Box, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -19,8 +22,11 @@ export const CartOfProducts = ({ order }) => {
     return (total += product.price * product.quantity);
   }, 0);
 
-  const handleClick = (product) => {
+  const addProductOnClick = (product) => {
     dispatch(updateProductInCart(product));
+  };
+  const removeProductOnClick = (product) => {
+    dispatch(removeProductInCart(product));
   };
 
   return (
@@ -38,6 +44,7 @@ export const CartOfProducts = ({ order }) => {
                   <IconButton
                     aria-label="remove product"
                     sx={{ color: colors.MAIN_DARK_COLOR }}
+                    onClick={() => removeProductOnClick(product)}
                   >
                     <RemoveIcon fontSize="inherit" />
                   </IconButton>
@@ -45,7 +52,7 @@ export const CartOfProducts = ({ order }) => {
                   <IconButton
                     aria-label="add product"
                     sx={{ color: colors.ACTIVE_ACCENT_COLOR }}
-                    onClick={() => handleClick(product)}
+                    onClick={() => addProductOnClick(product)}
                   >
                     <AddCircleIcon fontSize="inherit" />
                   </IconButton>
