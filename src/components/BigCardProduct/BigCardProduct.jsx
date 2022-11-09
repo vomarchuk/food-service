@@ -22,10 +22,10 @@ export const BigCardProduct = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    const isDublicate = productOfCart.filter(
+    const isDuplicate = productOfCart.filter(
       (product) => product.productId === currentProduct.productId
     );
-    isDublicate.length === 0
+    isDuplicate.length === 0
       ? dispatch(addProductInCart(currentProduct))
       : dispatch(updateProductInCart(currentProduct));
   };

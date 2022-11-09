@@ -9,7 +9,7 @@ import { CartOfProducts } from '../../components/CartOfProducts';
 
 import { colors } from '../../constants';
 
-import style from './CartPage.module.scss';
+// import style from './CartPage.module.scss';
 
 export const CartPage = () => {
   const order = useSelector((state) => state.products);

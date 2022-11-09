@@ -55,8 +55,9 @@ const cartSlice = createSlice({
 
       state.map((item) => {
         if (item.productId === action.payload.productId && item.quantity > 1) {
-          return (item.quantity -= 1);
+          item.quantity -= 1;
         }
+        return item;
         // console.log(product.quantity, product.productName);
       });
       // if ((product.quantity = 1)) state.filter(index, 1);
@@ -66,6 +67,7 @@ const cartSlice = createSlice({
         if (item.productId === action.payload.productId) {
           item.quantity += 1;
         }
+        return item;
       });
     },
     // prepare(array) {
