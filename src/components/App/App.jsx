@@ -10,6 +10,8 @@ import {
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
+import { ToastContainer } from 'react-toastify';
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +28,7 @@ function App() {
         <Route path="/feedback" element={<FeedbackPage />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </BrowserRouter>
   );
 }

@@ -8,7 +8,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Title } from '../Title';
 import { Image } from '../Image';
-
+import { notify } from '../Toast';
 import { colors } from '../../constants';
 
 import style from './CartOfProducts.module.scss';
@@ -24,6 +24,7 @@ export const CartOfProducts = ({ order }) => {
 
   const addProductOnClick = (product) => {
     dispatch(updateProductInCart(product));
+    notify('You have added the product to the cart!');
   };
   const removeProductOnClick = (product) => {
     dispatch(removeProductInCart(product));
@@ -87,5 +88,3 @@ export const CartOfProducts = ({ order }) => {
     </section>
   );
 };
-
-// const style ={}

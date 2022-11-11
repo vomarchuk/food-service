@@ -3,30 +3,16 @@ import {
   addProductInCart,
   updateProductInCart,
 } from '../../redux/cart/reducer';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '@mui/material';
 
 import { Container } from '../Container';
 import { Title } from '../Title';
 import { Image } from '../Image';
 import { colors } from '../../constants';
+import { notify } from '../Toast';
 import style from './BigCardProduct.module.scss';
 
 export const BigCardProduct = ({ product }) => {
-  const notify = () => {
-    toast.success('You have added the product to the cart!', {
-      position: 'top-right',
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
-
   const productOfCart = useSelector((state) => state.products);
   const { largeImage, productName, chunks, weight, price } = product;
 
@@ -42,7 +28,7 @@ export const BigCardProduct = ({ product }) => {
       ? dispatch(addProductInCart(currentProduct))
       : dispatch(updateProductInCart(currentProduct));
 
-    notify();
+    notify('You have added the product to the cart!');
   };
 
   return (
@@ -65,7 +51,6 @@ export const BigCardProduct = ({ product }) => {
           </Button>
         </div>
       </div>
-      <ToastContainer />
     </Container>
   );
 };

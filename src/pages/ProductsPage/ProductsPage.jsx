@@ -6,12 +6,11 @@ import {
 } from '../../redux/cart/reducer';
 import { useLocalStorage } from '../../Hooks';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 
 import { Button } from '@mui/material';
 import { Container } from '../../components/Container';
 import { Sorting } from '../../components/Sorting';
-
+import { notify } from '../../components/Toast';
 import { colors } from '../../constants';
 
 import { sortProduct, getCurrentProductsCategory } from '../../helpers';
@@ -38,18 +37,6 @@ export const ProductsPage = () => {
     'products',
     JSON.stringify(CurrentProductsCategory)
   );
-  const notify = () => {
-    toast.success('You have added the product to the cart!', {
-      position: 'top-right',
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
 
   const result = sortProduct(JSON.parse(products), sortType);
 
@@ -64,7 +51,7 @@ export const ProductsPage = () => {
     isDuplicate.length === 0
       ? dispatch(addProductInCart(currentProduct))
       : dispatch(updateProductInCart(currentProduct));
-    notify();
+    notify('You have added the product to the cart!');
   };
 
   useEffect(() => {
@@ -127,7 +114,6 @@ export const ProductsPage = () => {
             );
           })}
       </ul>
-      <ToastContainer />
     </Container>
   );
 };
