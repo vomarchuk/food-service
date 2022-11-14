@@ -49,9 +49,15 @@ export const CartPage = () => {
         <>
           <Maps mapSize="large" showDelivery={true} />
           <Link sx={styles.forLink} to="/">
-            <Button sx={styles.forButton} variant="contained">
-              See menu
-            </Button>
+            {order.length === 0 ? (
+              <Button sx={styles.forButton} variant="contained">
+                See menu
+              </Button>
+            ) : (
+              <Button sx={styles.forButton} variant="contained">
+                Send an order
+              </Button>
+            )}
           </Link>
         </>
       )}
