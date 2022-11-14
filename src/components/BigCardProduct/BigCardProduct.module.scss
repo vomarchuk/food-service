@@ -2,11 +2,11 @@
 
 .card {
   margin-top: 15px;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  // height: 584px;
 
   background-color: $main-light-color;
   border-radius: 15px;
@@ -30,7 +30,7 @@
   align-items: center;
   margin-top: 15px;
   width: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .price {

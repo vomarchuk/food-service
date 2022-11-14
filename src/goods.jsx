@@ -24,7 +24,6 @@ export const backEnd = {
         BY_NAME: 'By name',
         PRICE_LOW_TO_HIGH: 'Price: low to high',
         PRICE_HIGH_TO_LOW: 'Price: high to low',
-        WEIGHT: 'Weight',
       },
     },
     {
@@ -190,7 +189,6 @@ export const backEnd = {
         BY_NAME: 'By name',
         PRICE_LOW_TO_HIGH: 'Price: low to high',
         PRICE_HIGH_TO_LOW: 'Price: high to low',
-        WEIGHT: 'Weight',
       },
     },
   ],
@@ -291,6 +289,10 @@ export const backEnd = {
         x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
       },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
     },
     {
       productId: '2-8',
@@ -302,6 +304,10 @@ export const backEnd = {
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1htvaz.yakuza-set.jpg',
         x2: 'https://i.im.ge/2022/09/22/1htJA6.yakuza-set2x.jpg',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
       },
     },
     {
@@ -315,6 +321,10 @@ export const backEnd = {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
       },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
     },
     {
       productId: '1-2',
@@ -326,6 +336,10 @@ export const backEnd = {
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
       },
     },
     {
@@ -339,6 +353,10 @@ export const backEnd = {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
       },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
     },
     {
       productId: '1-4',
@@ -350,6 +368,10 @@ export const backEnd = {
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
       },
     },
     {
@@ -363,6 +385,10 @@ export const backEnd = {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
       },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
     },
     {
       productId: '1-6',
@@ -375,6 +401,10 @@ export const backEnd = {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
       },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
     },
     {
       productId: '4-1',
@@ -386,6 +416,74 @@ export const backEnd = {
       smallImage: {
         x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
         x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
+    },
+    {
+      productId: '4-2',
+      productName: 'Kamikaze',
+      categoryId: '4',
+      weight: 41,
+      chunks: 1,
+      price: 50,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
+    },
+    {
+      productId: '4-3',
+      productName: 'Sake Ten',
+      categoryId: '4',
+      weight: 41,
+      chunks: 1,
+      price: 50,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
+    },
+    {
+      productId: '4-4',
+      productName: 'Salmon',
+      categoryId: '4',
+      weight: 41,
+      chunks: 1,
+      price: 50,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
+      },
+    },
+    {
+      productId: '4-5',
+      productName: 'Ura Pasta Tamago',
+      categoryId: '4',
+      weight: 41,
+      chunks: 10,
+      price: 50,
+      smallImage: {
+        x1: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+        x2: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      largeImage: {
+        x1: 'https://i.im.ge/2022/09/22/1htW1L.kamikaze-set.jpg',
+        x2: 'https://i.im.ge/2022/09/22/1htZmG.kamikaze-set2x.jpg',
       },
     },
   ],

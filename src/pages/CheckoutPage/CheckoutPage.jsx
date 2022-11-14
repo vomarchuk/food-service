@@ -16,7 +16,6 @@ import { OrderingSchema } from '../../helpers/validate/ordering.schema';
 export const CheckoutPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const isValid = (error, className) =>
     `${style[`${className}`]}  ${error && style['is-Not-Valid']}`;
 

@@ -3,27 +3,27 @@ import { useLocalStorage } from '../../Hooks';
 import { useParams } from 'react-router-dom';
 
 // import { Swiper, SwiperSlide } from 'swiper/react';
-import { Container } from '../../components/Container';
+// import { Container } from '../../components/Container';
 
 import { BigCardProduct } from '../../components/BigCardProduct';
-import { Carousel } from '../../components/Carousel';
+// import { Carousel } from '../../components/Carousel';
 
-import { backEnd } from '../../goods';
+// import { backEnd } from '../../goods';
 
-import style from './ProductPage.module.scss';
+// import style from './ProductPage.module.scss';
 
 export const ProductPage = () => {
   const [products] = useLocalStorage('products', '');
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
 
-  const getCompositionProduct = (product) => {
-    return product.compositionId.map((id) => {
-      return backEnd.products.find((product) => {
-        return product.productId === id;
-      });
-    });
-  };
+  // const getCompositionProduct = (product) => {
+  //   return product.compositionId.map((id) => {
+  //     return backEnd.products.find((product) => {
+  //       return product.productId === id;
+  //     });
+  //   });
+  // };
 
   useEffect(() => {
     const currentProductById = JSON.parse(products).find(

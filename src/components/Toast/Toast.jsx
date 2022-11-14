@@ -13,3 +13,16 @@ export const notify = (text) => {
     theme: 'light',
   });
 };
+
+export const warning = (text) => {
+  return toast.success(text, {
+    position: 'top-right',
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+};

@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocalStorage } from '../../Hooks';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { isObject } from '../../helpers';
@@ -8,12 +9,30 @@ import { Maps } from '../../components/Maps/Maps';
 import { CartOfProducts } from '../../components/CartOfProducts';
 
 import { colors } from '../../constants';
-
-// import style from './CartPage.module.scss';
+import { useEffect } from 'react';
+import { addDeliveryInfo } from '../../redux/delivery/actions';
 
 export const CartPage = () => {
+  const [deliveryStorage, setDeliveryStorage] = useLocalStorage(
+    'delivery',
+    null
+  );
   const order = useSelector((state) => state.products);
   const delivery = useSelector((state) => state.delivery);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (JSON.stringify(delivery) === deliveryStorage) {
+      return;
+    }
+    console.log(false);
+    if (!isObject(delivery) && JSON.parse(deliveryStorage)) {
+      dispatch(addDeliveryInfo(JSON.parse(deliveryStorage)));
+    }
+    if (isObject(delivery)) {
+      setDeliveryStorage(JSON.stringify(delivery));
+    }
+  }, []);
 
   return (
     <Container>
