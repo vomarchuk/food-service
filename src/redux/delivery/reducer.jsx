@@ -28,4 +28,5 @@ const initialState = [];
 // };
 export const deliveryReducer = createReducer(initialState, {
   [addDeliveryInfo]: (state, action) => action.payload,
+  [removeDeliveryInfo]: (state, action) => initialState,
 });

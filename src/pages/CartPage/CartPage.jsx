@@ -25,7 +25,6 @@ export const CartPage = () => {
     if (JSON.stringify(delivery) === deliveryStorage) {
       return;
     }
-    console.log(false);
     if (!isObject(delivery) && JSON.parse(deliveryStorage)) {
       dispatch(addDeliveryInfo(JSON.parse(deliveryStorage)));
     }
@@ -49,7 +48,7 @@ export const CartPage = () => {
       ) : (
         <>
           <Maps mapSize="large" showDelivery={true} />
-          <Link sx={styles.forLink} to="/checkout">
+          <Link sx={styles.forLink} to="/">
             <Button sx={styles.forButton} variant="contained">
               See menu
             </Button>

@@ -1,8 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
-
-import { MarkerIcon, ClockIcon } from '../Icons';
-
 import { Box, Skeleton, IconButton, Button } from '@mui/material';
 import {
   useJsApiLoader,
@@ -11,11 +8,16 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from '@react-google-maps/api';
+import { removeDeliveryInfo } from '../../redux/delivery/actions';
+
 import { colors } from '../../constants';
 import { isObject } from '../../helpers';
+import { MarkerIcon, ClockIcon } from '../Icons';
 import style from './GoogleMaps.module.scss';
 
 export const GoogleMaps = ({ mapHeight, showDelivery }) => {
+  const dispatch = useDispatch();
+
   const ourCoordinates = { lat: 52.252692, lng: 21.0336633 };
   const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
@@ -63,6 +65,8 @@ export const GoogleMaps = ({ mapHeight, showDelivery }) => {
     setDistance('');
     setDuration('');
     destinationRef.current.value = '';
+    dispatch(removeDeliveryInfo());
+    localStorage.setItem('delivery', null);
   };
 
   return (
