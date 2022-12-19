@@ -39,6 +39,9 @@ export const ProductsPage = () => {
   );
 
   const result = sortProduct(JSON.parse(products), sortType);
+  console.log(categoryName);
+  console.log(backEnd?.categories[0]);
+  // console.log(CurrentProductsCategory);
 
   const onChangeSortType = (value) => {
     setSortType(value);

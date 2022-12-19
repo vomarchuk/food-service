@@ -1,5 +1,5 @@
+/* eslint-disable no-fallthrough */
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import {
   HomePage,
   ProductsPage,

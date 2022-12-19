@@ -34,7 +34,8 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const Sorting = ({ onChangeSortType, sortType }) => {
+export const Sorting = ({ onChangeSortType, sortType, sortTypes }) => {
+  console.log(sortTypes);
   const handleChange = (event) => {
     onChangeSortType(event.target.value);
   };
