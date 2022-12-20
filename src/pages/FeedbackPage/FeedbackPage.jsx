@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import * as reviewsOperations from '../../redux/reviews/reviewsOperations';
+import reviewsSelector from '../../redux/reviews/reviewsSelectors';
 import { Formik, Form, Field, FormikHelpers, useField } from 'formik';
-import { useState } from 'react';
-import { backEnd } from '../../goods';
 
 import { Button, Modal, Box } from '@mui/material';
 import { Container } from '../../components/Container';
@@ -12,8 +14,10 @@ import style from './FeedbackPage.module.scss';
 
 export const FeedbackPage = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const reviews = backEnd.reviews;
+  const reviews = useSelector(reviewsSelector.getReviews);
+  const reviewsIsLoading = useSelector(reviewsSelector.reviewsIsLoading);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -31,10 +35,14 @@ export const FeedbackPage = () => {
     );
   };
 
+  useEffect(() => {
+    dispatch(reviewsOperations.fetchReviews());
+  }, [dispatch]);
+
   return (
     <Container>
       <h2 className={style.title}>Reviews</h2>
-      <ReviewsList reviews={reviews} />
+      <ReviewsList reviews={reviews} isLoading={reviewsIsLoading} />
       <Button
         variant="contained"
         type="button"

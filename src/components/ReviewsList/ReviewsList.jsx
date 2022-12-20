@@ -1,11 +1,32 @@
-import { ReviewItem } from '../ReviewItem';
+import { Box } from '@mui/material';
 
-export const ReviewsList = ({ reviews }) => {
+import style from './ReviewsList.module.scss';
+
+export const ReviewsList = ({ reviews, isLoading }) => {
   return (
     <>
-      {reviews.map((review) => (
-        <ReviewItem key={review.id} review={review} />
-      ))}
+      {isLoading ? (
+        <>LOADING...</> //need spinner or skeleton
+      ) : (
+        reviews.length > 0 &&
+        reviews.map((review) => (
+          <Box key={review['_id']} sx={styles.forBox}>
+            <p className={style.name}>
+              {review.author} <span className={style.date}>{review.date}</span>
+            </p>
+            <p className={style.description}>{review.description}</p>
+          </Box>
+        ))
+      )}
     </>
   );
+};
+
+const styles = {
+  forBox: {
+    mt: '10px',
+    p: '10px',
+    borderRadius: '5px',
+    backgroundColor: 'white',
+  },
 };
