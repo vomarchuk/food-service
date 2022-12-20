@@ -10,6 +10,5 @@ export const fetchReviews = async () => {
 export const fetchReviewById = async (reviewId) => {
   const { data } = await axios.get(`/reviews/${reviewId}`);
   const result = data?.data?.result;
-  console.log(result);
   return result;
 };
