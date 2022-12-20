@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-
+import { useSelector } from 'react-redux';
+import categoriesSelectors from '../../redux/categories/categoriesSelectors';
 import { Grid } from '@mui/material';
 
 import { backEnd } from '../../goods';
@@ -8,6 +9,12 @@ import { SkeletonCardMenu } from '../Skeleton';
 // import style from './CategoriesList.module.scss';
 
 export const CategoriesList = () => {
+  const categories = useSelector(categoriesSelectors.getCategories);
+  const categoriesIsLoading = useSelector(
+    categoriesSelectors.categoriesIsLoading
+  );
+  console.log(categoriesIsLoading);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
