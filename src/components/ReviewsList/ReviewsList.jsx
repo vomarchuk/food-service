@@ -11,7 +11,7 @@ export const ReviewsList = ({ reviews, isLoading }) => {
         reviews.length > 0 &&
         reviews.map((review) => (
           <Box key={review['_id']} sx={styles.forBox}>
-            <p className={style.name}>
+            <p className={style.author}>
               {review.author} <span className={style.date}>{review.date}</span>
             </p>
             <p className={style.description}>{review.description}</p>
