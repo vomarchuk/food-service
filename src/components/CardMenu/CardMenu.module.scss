@@ -1,5 +1,15 @@
 @import '../../styles/shared.scss';
 
+.link {
+  position: relative;
+  cursor: pointer;
+}
+
+.cardImage {
+  min-width: 161px;
+  min-height: 156px;
+}
+
 .cardTitle {
   position: absolute;
   top: 10px;
@@ -10,14 +20,13 @@
   color: $main-light-color;
 }
 
-
 .cardPromoTitle {
   @extend .cardTitle;
   top: auto;
   bottom: 7px;
 }
 
-.cardCoon {
+.cardSoon {
   position: absolute;
 
   top: 10px;
@@ -31,9 +40,4 @@
   font-weight: 400;
   line-height: 14px;
   text-transform: uppercase;
-}
-
-.link {
-  position: relative;
-  cursor: pointer;
 }

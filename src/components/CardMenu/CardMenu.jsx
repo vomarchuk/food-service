@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import style from './CardMenu.module.scss';
 
 export const CardMenu = ({ categoryName, fullName, smallImage, soon }) => {
-  // console.log(soon);
   return soon ? (
     <div className={style.link}>
       <img
@@ -16,7 +15,7 @@ export const CardMenu = ({ categoryName, fullName, smallImage, soon }) => {
       />
       <Box>
         <h2 className={style.cardTitle}>{fullName}</h2>
-        {soon && <p className={style.cardCoon}>Soon</p>}
+        {soon && <p className={style.cardSoon}>Soon</p>}
       </Box>
     </div>
   ) : (
@@ -30,7 +29,6 @@ export const CardMenu = ({ categoryName, fullName, smallImage, soon }) => {
       />
       <Box>
         <h2 className={style.cardTitle}>{fullName}</h2>
-        {soon && <p className={style.cardCoon}>Soon</p>}
       </Box>
     </Link>
   );

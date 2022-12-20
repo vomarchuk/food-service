@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import categoriesSelectors from '../../redux/categories/categoriesSelectors';
 import { Grid } from '@mui/material';
 
-import { backEnd } from '../../goods';
 import { CardMenu } from '../CardMenu';
 import { SkeletonCardMenu } from '../Skeleton';
 // import style from './CategoriesList.module.scss';
@@ -13,15 +12,11 @@ export const CategoriesList = () => {
   const categoriesIsLoading = useSelector(
     categoriesSelectors.categoriesIsLoading
   );
-  console.log(categoriesIsLoading);
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, []);
+  const sortingCategories = [];
+  if (categories.length > 0) {
+    sortingCategories.push(...categories);
+    sortingCategories.sort((first, last) => first.doubleCard - last.doubleCard);
+  }
 
   return (
     <Grid
@@ -30,40 +25,41 @@ export const CategoriesList = () => {
       spacing={1}
       justifyContent="space-between"
     >
-      {backEnd.categories.map((category) => {
-        const {
-          categoryId,
-          categoryName,
-          fullName,
-          smallImage,
-          soon,
-          doubleCard,
-        } = category;
+      {sortingCategories &&
+        sortingCategories.map((category) => {
+          const {
+            _id: categoryId,
+            categoryName,
+            fullName,
+            image: smallImage,
+            soon,
+            doubleCard,
+          } = category;
 
-        return (
-          <Grid
-            key={`${categoryId}-${categoryName}`}
-            item
-            xs={doubleCard ? 12 : 6}
-            container
-            spacing={0}
-          >
-            {isLoading ? (
-              <SkeletonCardMenu />
-            ) : (
-              <CardMenu
-                key={`${categoryId}-${categoryName}`}
-                categoryId={categoryId}
-                categoryName={categoryName}
-                smallImage={smallImage}
-                fullName={fullName}
-                soon={soon}
-                doubleCard={doubleCard}
-              />
-            )}
-          </Grid>
-        );
-      })}
+          return (
+            <Grid
+              key={categoryId}
+              item
+              xs={doubleCard ? 12 : 6}
+              container
+              spacing={0}
+            >
+              {categoriesIsLoading ? (
+                <SkeletonCardMenu />
+              ) : (
+                <CardMenu
+                  // key={categoryId}
+                  categoryId={categoryId}
+                  categoryName={categoryName}
+                  smallImage={smallImage}
+                  fullName={fullName}
+                  soon={soon}
+                  doubleCard={doubleCard}
+                />
+              )}
+            </Grid>
+          );
+        })}
     </Grid>
   );
 };
