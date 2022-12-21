@@ -1,1 +1,1 @@
-export * from './Skeleton-CardMenu';
+export * from './Skeleton-CategoriesList';

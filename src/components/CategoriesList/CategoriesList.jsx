@@ -1,10 +1,9 @@
-// import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import categoriesSelectors from '../../redux/categories/categoriesSelectors';
 import { Grid } from '@mui/material';
 
 import { CardMenu } from '../CardMenu';
-import { SkeletonCardMenu } from '../Skeleton';
+import { SkeletonCategoriesList } from '../Skeleton';
 // import style from './CategoriesList.module.scss';
 
 export const CategoriesList = () => {
@@ -25,7 +24,10 @@ export const CategoriesList = () => {
       spacing={1}
       justifyContent="space-between"
     >
-      {sortingCategories &&
+      {categoriesIsLoading ? (
+        <SkeletonCategoriesList />
+      ) : (
+        sortingCategories &&
         sortingCategories.map((category) => {
           const {
             _id: categoryId,
@@ -44,22 +46,19 @@ export const CategoriesList = () => {
               container
               spacing={0}
             >
-              {categoriesIsLoading ? (
-                <SkeletonCardMenu />
-              ) : (
-                <CardMenu
-                  // key={categoryId}
-                  categoryId={categoryId}
-                  categoryName={categoryName}
-                  smallImage={smallImage}
-                  fullName={fullName}
-                  soon={soon}
-                  doubleCard={doubleCard}
-                />
-              )}
+              <CardMenu
+                // key={categoryId}
+                categoryId={categoryId}
+                categoryName={categoryName}
+                smallImage={smallImage}
+                fullName={fullName}
+                soon={soon}
+                doubleCard={doubleCard}
+              />
             </Grid>
           );
-        })}
+        })
+      )}
     </Grid>
   );
 };
