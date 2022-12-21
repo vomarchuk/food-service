@@ -23,6 +23,10 @@
     transform: scale(1.1);
   }
 
+  &.hidden {
+    bottom: -60px;
+    opacity: 0;
+  }
 
 }
 
@@ -41,7 +45,7 @@
 }
 
 // @media screen and (max-width:1920px) {
-  //   #back-to-top {
-  //     bottom: 80px
-  //   }
-  // }
+//   #back-to-top {
+//     bottom: 80px
+//   }
+// }
