@@ -2,16 +2,22 @@
 
 #back-to-top {
   display: flex;
+  width: 50px;
+  height: 50px;
+  bottom: 80px;
+
   align-items: center;
   justify-content: center;
+  opacity: 0.6;
   z-index: 10;
-  width: 60px;
-  height: 60px;
   transition: $timing-function-main;
   transition-duration: $time-main;
   background-color: $secondary-light-color;
 
+
+
   &:hover {
+    opacity: 1;
     fill: $secondary-light-color;
     background-color: $active-accent-color;
     transform: scale(1.1);
@@ -22,8 +28,8 @@
 
 #back-to-top svg {
   fill: $active-accent-color;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin: auto;
   border-radius: 50%;
   transition: $timing-function-main;
@@ -33,3 +39,9 @@
     fill: $secondary-light-color;
   }
 }
+
+// @media screen and (max-width:1920px) {
+  //   #back-to-top {
+  //     bottom: 80px
+  //   }
+  // }

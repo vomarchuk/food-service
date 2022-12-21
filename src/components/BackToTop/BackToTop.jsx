@@ -1,9 +1,8 @@
 import { addBackToTop } from 'vanilla-back-to-top';
-import './BackToTop.module.scss';
 const backToTopOptions = {
   backgroundColor: '#ff9846',
   cornerOffset: 20,
-  diameter: 56,
+  diameter: 46,
   id: 'back-to-top',
   onClickScrollTo: 0,
   scrollContainer: document.body,
