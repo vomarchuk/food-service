@@ -6,6 +6,7 @@ import { CategoriesList } from '../../components/CategoriesList';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(categoriesOperations.fetchCategories());
   }, [dispatch]);
