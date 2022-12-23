@@ -15,7 +15,6 @@ import '../BackToTop/BackToTop';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
-  // customBackToTop();
   return (
     <BrowserRouter>
       <Header />
