@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import categoriesSelectors from '../../redux/categories/categoriesSelectors';
 import { Grid } from '@mui/material';
 
-import { CardMenu } from '../CardMenu';
+import { CategoryItem } from '../CategoryItem';
 import { SkeletonCategoriesList } from '../Skeleton';
 // import style from './CategoriesList.module.scss';
 
@@ -46,8 +46,8 @@ export const CategoriesList = () => {
               container
               spacing={0}
             >
-              <CardMenu
-                // key={categoryId}
+              <CategoryItem
+                key={categoryId}
                 categoryId={categoryId}
                 categoryName={categoryName}
                 smallImage={smallImage}

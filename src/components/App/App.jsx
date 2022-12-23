@@ -21,11 +21,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="category/:categoryName" element={<ProductsPage />} />
-        <Route
-          path="category/:categoryName/:productId"
-          element={<ProductPage />}
-        />
+        <Route path="/:categoryName" element={<ProductsPage />} />
+        <Route path="/:categoryName/:productId" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/feedback" element={<FeedbackPage />} />

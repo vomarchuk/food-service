@@ -1,5 +1,6 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://food-service-api.herokuapp.com/api';
+import { DEFAULT_URL } from '../constants';
+axios.defaults.baseURL = DEFAULT_URL;
 
 export const fetchCategories = async () => {
   const { data } = await axios.get('/categories');

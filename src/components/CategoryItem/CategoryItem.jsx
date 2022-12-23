@@ -1,9 +1,15 @@
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import style from './CardMenu.module.scss';
+import style from './CategoryItem.module.scss';
 
-export const CardMenu = ({ categoryName, fullName, smallImage, soon }) => {
+export const CategoryItem = ({
+  categoryId,
+  categoryName,
+  fullName,
+  smallImage,
+  soon,
+}) => {
   return soon ? (
     <div className={style.link}>
       <img
@@ -19,7 +25,7 @@ export const CardMenu = ({ categoryName, fullName, smallImage, soon }) => {
       </Box>
     </div>
   ) : (
-    <Link className={style.link} to={`/category/${categoryName}`}>
+    <Link className={style.link} to={`/${categoryName}`}>
       <img
         className={style.cardImage}
         src={smallImage.x1}
