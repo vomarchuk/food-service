@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 //pending
-export const fetchProductsActions = createAction(
+export const fetchProductsRequest = createAction(
   'products/fetchProductsRequest'
 );
 //fulfilled
