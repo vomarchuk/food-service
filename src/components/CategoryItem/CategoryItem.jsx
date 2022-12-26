@@ -25,7 +25,7 @@ export const CategoryItem = ({
       </Box>
     </div>
   ) : (
-    <Link className={style.link} to={`/${categoryName}`}>
+    <Link className={style.link} to={`/${categoryId}`}>
       <img
         className={style.cardImage}
         src={smallImage.x1}

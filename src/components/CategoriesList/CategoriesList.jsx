@@ -4,7 +4,6 @@ import { Grid } from '@mui/material';
 
 import { CategoryItem } from '../CategoryItem';
 import { SkeletonCategoriesList } from '../Skeleton';
-// import style from './CategoriesList.module.scss';
 
 export const CategoriesList = () => {
   const categories = useSelector(categoriesSelectors.getCategories);

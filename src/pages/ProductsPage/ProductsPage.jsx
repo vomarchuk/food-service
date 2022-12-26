@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addProductInCart,
@@ -19,57 +19,58 @@ import { backEnd, typesSort } from '../../goods';
 import style from './ProductsPage.module.scss';
 ////////////////////////////////////////////////////////////////
 
-const { DEFAULT } = typesSort;
+import categoriesSelectors from '../../redux/categories/categoriesSelectors';
+import productsSelectors from '../../redux/products/productsSelectors';
+import * as productsOperations from '../../redux/products/productsOperations';
+
+// const { DEFAULT } = typesSort;
 
 export const ProductsPage = () => {
-  const { pathname } = useLocation();
-  const { categoryName } = useParams();
-  const productOfCart = useSelector((state) => state.products);
+  // const { pathname } = useLocation();
+  const { categoryId } = useParams();
 
   const dispatch = useDispatch();
 
-  const CurrentProductsCategory = getCurrentProductsCategory(
-    backEnd,
-    categoryName
-  );
-  const [sortType, setSortType] = useLocalStorage('sortType', DEFAULT);
-  const [products, setProducts] = useLocalStorage(
-    'products',
-    JSON.stringify(CurrentProductsCategory)
-  );
+  const products = useSelector(productsSelectors.getProducts);
 
-  const result = sortProduct(JSON.parse(products), sortType);
-  console.log(categoryName);
-  console.log(backEnd?.categories[0]);
-  // console.log(CurrentProductsCategory);
+  // console.log(categories);
+  // if (categories.length > 0) {
+  //   const currentCategory = categories.find(
+  //     (item) => item.categoryName === categoryName
+  //   );
+  //   // setCurrentCategoryId(currentCategory['_id']);
+  // }
 
-  const onChangeSortType = (value) => {
-    setSortType(value);
-  };
+  // const onChangeSortType = (value) => {
+  //   setSortType(value);
+  // };
 
-  const handleClick = (currentProduct) => {
-    const isDuplicate = productOfCart.filter(
-      (product) => product.productId === currentProduct.productId
-    );
-    isDuplicate.length === 0
-      ? dispatch(addProductInCart(currentProduct))
-      : dispatch(updateProductInCart(currentProduct));
-    notify('You have added the product to the cart!');
-  };
+  // const handleClick = (currentProduct) => {
+  //   const isDuplicate = productOfCart.filter(
+  //     (product) => product.productId === currentProduct.productId
+  //   );
+  //   isDuplicate.length === 0
+  //     ? dispatch(addProductInCart(currentProduct))
+  //     : dispatch(updateProductInCart(currentProduct));
+  //   notify('You have added the product to the cart!');
+  // };
+
+  // useEffect(() => {
+  //   setProducts(JSON.stringify(CurrentProductsCategory));
+  // }, [sortType]);
 
   useEffect(() => {
-    setProducts(JSON.stringify(CurrentProductsCategory));
-  }, [sortType]);
-
+    dispatch(productsOperations.fetchProductsByCategoryId(categoryId));
+  }, [dispatch]);
   return (
     <Container>
-      <h1 className={style.titleCategory}>{categoryName}</h1>
-      <Sorting onChangeSortType={onChangeSortType} sortType={sortType} />
+      {/* <h1 className={style.titleCategory}>{categoryName}</h1> */}
+      {/*      <Sorting onChangeSortType={onChangeSortType} sortType={sortType} /> */}
       <ul className={style.productsList}>
-        {result &&
-          result.map((filteredProduct) => {
+        {products.length > 0 &&
+          products.map((filteredProduct) => {
             const {
-              productId,
+              _id: productId,
               productName,
               weight,
               chunks,
@@ -89,7 +90,7 @@ export const ProductsPage = () => {
                 />
                 <div className={style.description}>
                   <Link
-                    to={`${pathname}/${productId}`}
+                    to={`/${categoryId}/${productId}`}
                     className={style.productLink}
                   >
                     <p className={style.title}> {productName}</p>
@@ -107,7 +108,7 @@ export const ProductsPage = () => {
                       variant="contained"
                       type="button"
                       sx={styles.forButton}
-                      onClick={() => handleClick(currentProduct)}
+                      // onClick={() => handleClick(currentProduct)}
                     >
                       I want!
                     </Button>
