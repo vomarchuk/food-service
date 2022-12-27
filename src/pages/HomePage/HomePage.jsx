@@ -1,5 +1,5 @@
-import { Container } from '../../components/Container';
-import { CategoriesList } from '../../components/CategoriesList';
+import { Container } from 'components/Container';
+import { CategoriesList } from 'components/CategoriesList';
 
 export const HomePage = () => {
   return (

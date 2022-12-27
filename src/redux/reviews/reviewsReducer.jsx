@@ -1,19 +1,19 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
-import * as reviewsActions from './reviewsActions';
+import { fetchReviews } from './reviewsOperations';
 
 const entities = createReducer([], {
-  [reviewsActions.fetchReviewsSuccess]: (_, action) => action.payload,
+  [fetchReviews.fulfilled]: (_, action) => action.payload,
 });
 
 const isLoading = createReducer(false, {
-  [reviewsActions.fetchReviewsRequest]: () => true,
-  [reviewsActions.fetchReviewsSuccess]: () => false,
-  [reviewsActions.fetchReviewsError]: () => false,
+  [fetchReviews.pending]: () => true,
+  [fetchReviews.fulfilled]: () => false,
+  [fetchReviews.rejected]: () => false,
 });
 
 const error = createReducer(null, {
-  [reviewsActions.fetchReviewsError]: (_, action) => action.payload,
-  [reviewsActions.fetchReviewsRequest]: () => null,
+  [fetchReviews.rejected]: (_, action) => action.payload,
+  [fetchReviews.pending]: () => null,
 });
 
 export default combineReducers({

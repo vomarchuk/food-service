@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux';
-import {
-  updateProductInCart,
-  removeProductInCart,
-} from '../../redux/cart/reducer';
+import { useDispatch, useSelector } from 'react-redux';
+// import {
+//   updateProductInCart,
+//   removeProductInCart,
+// } from '../../redux/cart/cartReducer';
 import { Box, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -15,6 +15,7 @@ import style from './CartOfProducts.module.scss';
 
 export const CartOfProducts = ({ order }) => {
   const dispatch = useDispatch();
+
   const totalOrder = order.reduce((total, product) => {
     return (total += product.quantity);
   }, 0);
@@ -23,11 +24,11 @@ export const CartOfProducts = ({ order }) => {
   }, 0);
 
   const addProductOnClick = (product) => {
-    dispatch(updateProductInCart(product));
+    // dispatch(updateProductInCart(product));
     notify('You have added the product to the cart!');
   };
   const removeProductOnClick = (product) => {
-    dispatch(removeProductInCart(product));
+    // dispatch(removeProductInCart(product));
   };
 
   return (

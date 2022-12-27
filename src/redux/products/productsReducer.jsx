@@ -1,18 +1,18 @@
-import { createReducer, combineReducers } from '@reduxjs/toolkit';
-import * as productsActions from './productsActions';
+import { createReducer, combineReducers, createSlice } from '@reduxjs/toolkit';
+import { fetchProducts, fetchProductsByCategoryId } from './productsOperations';
 
 const entities = createReducer([], {
-  [productsActions.fetchProductsSuccess]: (_, action) => action.payload,
+  [fetchProductsByCategoryId.fulfilled]: (_, action) => action.payload,
 });
 const isLoading = createReducer(false, {
-  [productsActions.fetchProductsRequest]: () => true,
-  [productsActions.fetchProductsSuccess]: () => false,
-  [productsActions.fetchProductsError]: () => false,
+  [fetchProductsByCategoryId.pending]: () => true,
+  [fetchProductsByCategoryId.fulfilled]: () => false,
+  [fetchProductsByCategoryId.rejected]: () => false,
 });
 
 const error = createReducer(null, {
-  [productsActions.fetchProductsError]: (_, action) => action.payload,
-  [productsActions.fetchProductsRequest]: () => null,
+  [fetchProductsByCategoryId.rejected]: (_, action) => action.payload,
+  [fetchProductsByCategoryId.pending]: () => null,
 });
 
 export default combineReducers({

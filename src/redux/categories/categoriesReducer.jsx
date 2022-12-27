@@ -1,19 +1,19 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
-import * as categoriesActions from './categoriesActions';
+import { fetchCategories } from './categoriesOperations';
 
 const entities = createReducer([], {
-  [categoriesActions.fetchCategoriesSuccess]: (_, action) => action.payload,
+  [fetchCategories.fulfilled]: (_, action) => action.payload,
 });
 
 const isLoading = createReducer(false, {
-  [categoriesActions.fetchCategoriesRequest]: () => true,
-  [categoriesActions.fetchCategoriesSuccess]: () => false,
-  [categoriesActions.fetchCategoriesError]: () => false,
+  [fetchCategories.pending]: () => true,
+  [fetchCategories.fulfilled]: () => false,
+  [fetchCategories.rejected]: () => false,
 });
 
 const error = createReducer(null, {
-  [categoriesActions.fetchCategoriesError]: (_, action) => action.payload,
-  [categoriesActions.fetchCategoriesRequest]: () => null,
+  [fetchCategories.rejected]: (_, action) => action.payload,
+  [fetchCategories.pending]: () => null,
 });
 
 export default combineReducers({

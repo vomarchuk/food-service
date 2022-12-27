@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import categoriesSelectors from '../../redux/categories/categoriesSelectors';
+import { categoriesSelectors } from 'redux/categories';
 import { Grid } from '@mui/material';
 
-import { CategoryItem } from '../CategoryItem';
-import { SkeletonCategoriesList } from '../Skeleton';
+import { CategoryItem } from 'components/CategoryItem';
+import { SkeletonCategoriesList } from 'components/Skeleton';
 
 export const CategoriesList = () => {
   const categories = useSelector(categoriesSelectors.getCategories);

@@ -1,12 +1,11 @@
-import * as reviewsAPI from '../../services/reviews-API';
-import * as reviewsActions from './reviewsActions';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const fetchReviews = () => async (dispatch) => {
-  dispatch(reviewsActions.fetchReviewsRequest());
-  try {
+import * as reviewsAPI from '../../services/reviews-API';
+
+export const fetchReviews = createAsyncThunk(
+  'reviews/fetchReviews',
+  async () => {
     const reviews = await reviewsAPI.fetchReviews();
-    dispatch(reviewsActions.fetchReviewsSuccess(reviews));
-  } catch (error) {
-    dispatch(reviewsActions.fetchReviewsError(error));
+    return reviews;
   }
-};
+);

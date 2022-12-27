@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addProductInCart,
-  updateProductInCart,
-} from '../../redux/cart/reducer';
+// import {
+//   addProductInCart,
+//   updateProductInCart,
+// } from '../../redux/cart/cartReducer';
 import { Button } from '@mui/material';
 
 import { Container } from '../Container';
@@ -24,9 +24,9 @@ export const BigCardProduct = ({ product }) => {
     const isDuplicate = productOfCart.filter(
       (product) => product.productId === currentProduct.productId
     );
-    isDuplicate.length === 0
-      ? dispatch(addProductInCart(currentProduct))
-      : dispatch(updateProductInCart(currentProduct));
+    // isDuplicate.length === 0
+    //   ? dispatch(addProductInCart(currentProduct))
+    //   : dispatch(updateProductInCart(currentProduct));
 
     notify('You have added the product to the cart!');
   };

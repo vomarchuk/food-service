@@ -47,7 +47,8 @@ export const Sorting = ({ onChangeSortType, sortType, sortTypes }) => {
           Sorting
         </InputLabel>
         <Select
-          value={sortType}
+          // value={sortType}
+          value={DEFAULT}
           labelId="demo-simple-select-error-label"
           label="Sorting"
           autoWidth

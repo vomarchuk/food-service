@@ -1,29 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addProductInCart,
-  updateProductInCart,
-} from '../../redux/cart/reducer';
-import { useLocalStorage } from '../../Hooks';
+
+import { cartActions, cartSelectors } from 'redux/cart';
+import { categoriesSelectors } from 'redux/categories';
+import { productsOperations, productsSelectors } from 'redux/products';
+
+// import { useLocalStorage } from 'Hooks';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { Button } from '@mui/material';
-import { Container } from '../../components/Container';
-import { Sorting } from '../../components/Sorting';
-import { notify } from '../../components/Toast';
-import { colors } from '../../constants';
+import { Container } from 'components/Container';
+// import { Sorting } from 'components/Sorting';
+import { notify } from 'components/Toast';
+import { colors } from 'constants';
 
-import { sortProduct, getCurrentProductsCategory } from '../../helpers';
-import { backEnd, typesSort } from '../../goods';
+// import { sortProduct, getCurrentProductsCategory } from 'helpers';
+import { typesSort } from 'goods';
 
 import style from './ProductsPage.module.scss';
 ////////////////////////////////////////////////////////////////
 
-import categoriesSelectors from '../../redux/categories/categoriesSelectors';
-import productsSelectors from '../../redux/products/productsSelectors';
-import * as productsOperations from '../../redux/products/productsOperations';
-
-// const { DEFAULT } = typesSort;
+const { DEFAULT } = typesSort;
 
 export const ProductsPage = () => {
   // const { pathname } = useLocation();
@@ -31,41 +28,46 @@ export const ProductsPage = () => {
 
   const dispatch = useDispatch();
 
+  const productOfCart = useSelector(cartSelectors.getCartOfProducts);
+
   const products = useSelector(productsSelectors.getProducts);
+  const categories = useSelector(categoriesSelectors.getCategories);
+  const category = categories.find(
+    (category) => category['_id'] === categoryId
+  );
 
-  // console.log(categories);
-  // if (categories.length > 0) {
-  //   const currentCategory = categories.find(
-  //     (item) => item.categoryName === categoryName
-  //   );
-  //   // setCurrentCategoryId(currentCategory['_id']);
-  // }
+  const onChangeSortType = (value) => {
+    //   setSortType(value);
+  };
 
-  // const onChangeSortType = (value) => {
-  //   setSortType(value);
-  // };
-
-  // const handleClick = (currentProduct) => {
-  //   const isDuplicate = productOfCart.filter(
-  //     (product) => product.productId === currentProduct.productId
-  //   );
-  //   isDuplicate.length === 0
-  //     ? dispatch(addProductInCart(currentProduct))
-  //     : dispatch(updateProductInCart(currentProduct));
-  //   notify('You have added the product to the cart!');
-  // };
-
-  // useEffect(() => {
-  //   setProducts(JSON.stringify(CurrentProductsCategory));
-  // }, [sortType]);
+  const handleClick = ({
+    _id: productId,
+    productName,
+    price,
+    category,
+    quantity,
+  }) => {
+    const newProduct = { productId, productName, price, category, quantity };
+    const isDuplicate = productOfCart.filter(
+      (product) => product.productId === newProduct.productId
+    );
+    isDuplicate.length === 0
+      ? dispatch(cartActions.addProductInCart(newProduct))
+      : dispatch(cartActions.updateProductInCart(newProduct));
+    notify('You have added the product to the cart!');
+  };
 
   useEffect(() => {
     dispatch(productsOperations.fetchProductsByCategoryId(categoryId));
   }, [dispatch]);
   return (
     <Container>
-      {/* <h1 className={style.titleCategory}>{categoryName}</h1> */}
-      {/*      <Sorting onChangeSortType={onChangeSortType} sortType={sortType} /> */}
+      {category && (
+        <h1 className={style.titleCategory}>{category.categoryName}</h1>
+      )}
+      {/* {typesSort && (
+        <Sorting onChangeSortType={onChangeSortType} sortTypes={typesSort} />
+      )} */}
       <ul className={style.productsList}>
         {products.length > 0 &&
           products.map((filteredProduct) => {
@@ -108,7 +110,7 @@ export const ProductsPage = () => {
                       variant="contained"
                       type="button"
                       sx={styles.forButton}
-                      // onClick={() => handleClick(currentProduct)}
+                      onClick={() => handleClick(currentProduct)}
                     >
                       I want!
                     </Button>
