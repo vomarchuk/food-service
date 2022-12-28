@@ -13,16 +13,18 @@ import style from './BigCardProduct.module.scss';
 export const BigCardProduct = ({ product }) => {
   const productOfCart = useSelector(cartSelectors.getCartOfProducts);
   const { largeImage, productName, chunks, weight, price } = product;
-
+  console.log(product);
   const dispatch = useDispatch();
 
   const handleClick = (currentProduct) => {
-    const isDuplicate = productOfCart.filter((product) => {
-      return product['_id'] === currentProduct['_id'];
+    const isDuplicate = productOfCart.filter(({ _id: productId }) => {
+      return productId === currentProduct['_id'];
     });
 
     isDuplicate.length === 0
-      ? dispatch(cartActions.addProductInCart(currentProduct))
+      ? dispatch(
+          cartActions.addProductInCart({ ...currentProduct, quantity: 1 })
+        )
       : dispatch(cartActions.updateProductInCart(currentProduct));
     notify('You have added the product to the cart!');
   };
