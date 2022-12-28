@@ -9,3 +9,4 @@ export const fetchCartError = createAction('cart/fetchCartError');
 
 export const addProductInCart = createAction('cart/addProductInCart');
 export const updateProductInCart = createAction('cart/updateProductInCart');
+export const removeProductInCart = createAction('cart/removeProductInCart');

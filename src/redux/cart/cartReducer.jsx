@@ -8,12 +8,30 @@ const entities = createReducer([], {
   },
   [cartActions.updateProductInCart]: (state, action) => {
     return [...state].map((item) => {
-      if (item.productId === action.payload.productId) {
+      if (item['_id'] === action.payload['_id']) {
         const newAmount = item.quantity + 1;
         return { ...item, quantity: newAmount };
       }
       return item;
     });
+  },
+  [cartActions.removeProductInCart]: (state, action) => {
+    const removeProductId = action.payload['_id'];
+
+    if (action.payload.quantity > 1) {
+      return [...state].map((item) => {
+        if (item['_id'] === removeProductId && item.quantity > 1) {
+          const newAmount = item.quantity - 1;
+          return { ...item, quantity: newAmount };
+        }
+        return item;
+      });
+    }
+    if (action.payload.quantity <= 1) {
+      return [...state].filter(
+        ({ _id: productId }) => productId !== removeProductId
+      );
+    }
   },
 });
 
@@ -26,68 +44,3 @@ export default combineReducers({
   entities,
   error,
 });
-// import { statusFilters } from './constants';
-
-// import { createSlice } from '@reduxjs/toolkit';
-// import { cartInitialState } from '../../helpers';
-
-// const filtersInitialState = {
-//   status: statusFilters.DEFAULT,
-// };
-
-// export const filtersReducer = (state = filtersInitialState, action) => {
-//   switch (action.type) {
-//     case 'filters/setStatusFilter':
-//       return {
-//         ...state,
-//         status: action.payload,
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-// const cartSlice = createSlice({
-//   name: 'cart',
-//   initialState: cartInitialState,
-//   reducers: {
-//     addProductInCart: (state, action) => {
-//       state.push(action.payload);
-//     },
-//     removeProductInCart: (state, action) => {
-//       // const index = state.findIndex(
-//       //   (product) => product.productId === action.payload.productId
-//       // );
-//       // const product = state.find(
-//       //   (product) => product.productId === action.payload.productId
-//       // );
-
-//       state.map((item) => {
-//         if (item.productId === action.payload.productId && item.quantity > 1) {
-//           item.quantity -= 1;
-//         }
-//         return item;
-//         // console.log(product.quantity, product.productName);
-//       });
-//       // if ((product.quantity = 1)) state.filter(index, 1);
-//     },
-//     updateProductInCart: (state, action) => {
-//       state.map((item) => {
-//         if (item.productId === action.payload.productId) {
-//           item.quantity += 1;
-//         }
-//         return item;
-//       });
-//     },
-//     // prepare(array) {
-//     //   return {
-//     //     payload: {
-//     //       array,
-//     //     },
-//     //   };
-//     // },
-//   },
-// });
-// export const { addProductInCart, removeProductInCart, updateProductInCart } =
-//   cartSlice.actions;
-// export const cartReducer = cartSlice.reducer;

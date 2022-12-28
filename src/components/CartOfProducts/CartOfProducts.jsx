@@ -1,21 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   updateProductInCart,
-//   removeProductInCart,
-// } from '../../redux/cart/cartReducer';
+import { useDispatch } from 'react-redux';
 import { Box, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { Title } from '../Title';
-import { Image } from '../Image';
-import { notify } from '../Toast';
-import { colors } from '../../constants';
+import { Title } from 'components/Title';
+import { Image } from 'components/Image';
+import { notify } from 'components/Toast';
+import { colors } from 'constants';
+
+import { cartActions } from 'redux/cart';
+// import { cartActions } from '../../redux/cart';
 
 import style from './CartOfProducts.module.scss';
-
 export const CartOfProducts = ({ order }) => {
   const dispatch = useDispatch();
-
   const totalOrder = order.reduce((total, product) => {
     return (total += product.quantity);
   }, 0);
@@ -24,18 +21,24 @@ export const CartOfProducts = ({ order }) => {
   }, 0);
 
   const addProductOnClick = (product) => {
-    // dispatch(updateProductInCart(product));
+    dispatch(cartActions.updateProductInCart(product));
     notify('You have added the product to the cart!');
   };
   const removeProductOnClick = (product) => {
-    // dispatch(removeProductInCart(product));
+    dispatch(cartActions.removeProductInCart(product));
   };
 
   return (
     <section className={style.cart}>
       <Title text="Cart" />
       {order.map((product) => {
-        const { productId, smallImage, productName, quantity, price } = product;
+        const {
+          _id: productId,
+          smallImage,
+          productName,
+          quantity,
+          price,
+        } = product;
         return (
           <div className={style['product']} key={productId}>
             <Image src={smallImage} alt={productName} width="90px" />

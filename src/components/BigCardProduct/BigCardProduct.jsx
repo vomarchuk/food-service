@@ -16,21 +16,14 @@ export const BigCardProduct = ({ product }) => {
 
   const dispatch = useDispatch();
 
-  const handleClick = ({
-    _id: productId,
-    productName,
-    price,
-    category,
-    quantity,
-  }) => {
-    const newProduct = { productId, productName, price, category, quantity };
-    const isDuplicate = productOfCart.filter(
-      (product) => product.productId === newProduct.productId
-    );
+  const handleClick = (currentProduct) => {
+    const isDuplicate = productOfCart.filter((product) => {
+      return product['_id'] === currentProduct['_id'];
+    });
 
     isDuplicate.length === 0
-      ? dispatch(cartActions.addProductInCart(newProduct))
-      : dispatch(cartActions.updateProductInCart(newProduct));
+      ? dispatch(cartActions.addProductInCart(currentProduct))
+      : dispatch(cartActions.updateProductInCart(currentProduct));
     notify('You have added the product to the cart!');
   };
 

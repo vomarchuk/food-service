@@ -1,23 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocalStorage } from '../../Hooks';
+import { useLocalStorage } from 'Hooks';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { isObject } from '../../helpers';
-import { Container } from '../../components/Container';
-import { EmptyCart } from '../../components/EmptyCart';
-import { Maps } from '../../components/Maps/Maps';
-import { CartOfProducts } from '../../components/CartOfProducts';
+import { isObject } from 'helpers';
+import { Container } from 'components/Container';
+import { EmptyCart } from 'components/EmptyCart';
+import { Maps } from 'components/Maps/Maps';
+import { CartOfProducts } from 'components/CartOfProducts';
 
-import { colors } from '../../constants';
+import { colors } from 'constants';
 import { useEffect } from 'react';
-import { addDeliveryInfo } from '../../redux/delivery/actions';
+import { addDeliveryInfo } from 'redux/delivery/actions';
+import { cartSelectors } from '../../redux/cart';
 
 export const CartPage = () => {
   const [deliveryStorage, setDeliveryStorage] = useLocalStorage(
     'delivery',
     null
   );
-  const order = useSelector((state) => state.products);
+  const order = useSelector(cartSelectors.getCartOfProducts);
   const delivery = useSelector((state) => state.delivery);
   const dispatch = useDispatch();
 
