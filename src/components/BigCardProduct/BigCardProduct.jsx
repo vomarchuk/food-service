@@ -1,33 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   addProductInCart,
-//   updateProductInCart,
-// } from '../../redux/cart/cartReducer';
+import { cartActions, cartSelectors } from 'redux/cart';
+
 import { Button } from '@mui/material';
 
-import { Container } from '../Container';
-import { Title } from '../Title';
-import { Image } from '../Image';
-import { colors } from '../../constants';
-import { notify } from '../Toast';
+import { Container } from 'components/Container';
+import { Title } from 'components/Title';
+import { Image } from 'components/Image';
+import { colors } from 'constants';
+import { notify } from 'components/Toast';
 import style from './BigCardProduct.module.scss';
 
 export const BigCardProduct = ({ product }) => {
-  const productOfCart = useSelector((state) => state.products);
+  const productOfCart = useSelector(cartSelectors.getCartOfProducts);
   const { largeImage, productName, chunks, weight, price } = product;
-
-  const currentProduct = { ...product, quantity: 1 };
 
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = ({
+    _id: productId,
+    productName,
+    price,
+    category,
+    quantity,
+  }) => {
+    const newProduct = { productId, productName, price, category, quantity };
     const isDuplicate = productOfCart.filter(
-      (product) => product.productId === currentProduct.productId
+      (product) => product.productId === newProduct.productId
     );
-    // isDuplicate.length === 0
-    //   ? dispatch(addProductInCart(currentProduct))
-    //   : dispatch(updateProductInCart(currentProduct));
 
+    isDuplicate.length === 0
+      ? dispatch(cartActions.addProductInCart(newProduct))
+      : dispatch(cartActions.updateProductInCart(newProduct));
     notify('You have added the product to the cart!');
   };
 
@@ -37,15 +40,17 @@ export const BigCardProduct = ({ product }) => {
         <Image src={largeImage} alt={productName} width="300px" />
 
         <Title text={productName} />
-        <p className={style.text}>
-          {weight} grams, {chunks} chunks
-        </p>
+        {weight !== null && chunks !== null && (
+          <p className={style.text}>
+            {weight} grams, {chunks} chunks
+          </p>
+        )}
         <div className={style.wrapper}>
           <p className={style.price}>{price} zl</p>
           <Button
             variant="contained"
             sx={styles.forButton}
-            onClick={handleClick}
+            onClick={() => handleClick(product)}
           >
             I want!
           </Button>

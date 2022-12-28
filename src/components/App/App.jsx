@@ -18,10 +18,12 @@ import '../BackToTop/BackToTop';
 import { ToastContainer } from 'react-toastify';
 
 import * as categoriesOperations from '../../redux/categories/categoriesOperations';
+import { productsOperations } from '../../redux/products';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
+    // dispatch(productsOperations.fetchProducts());
     dispatch(categoriesOperations.fetchCategories());
   }, [dispatch]);
   return (
@@ -30,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/:categoryId" element={<ProductsPage />} />
-        <Route path="/:categoryName/:productId" element={<ProductPage />} />
+        <Route path="/:categoryId/:productId" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/feedback" element={<FeedbackPage />} />

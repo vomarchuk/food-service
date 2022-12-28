@@ -27,7 +27,7 @@ delete =>
 
 /api/products
 get => '/' get all products
-get => '/:id' get category by category ID
+get => '/:id' get products by category ID
 post => '/:id' add product by category ID
 delete => '/:id' remove product by category ID
 

@@ -26,3 +26,14 @@ export const fetchProducts = createAsyncThunk(
     return result;
   }
 );
+
+export const fetchProductById = createAsyncThunk(
+  'products/fetchProductById',
+  async (id) => {
+    const products = await productsAPI.fetchProducts();
+    const result = products.find((product) => product['_id'] === id);
+    return result;
+
+    // return result;
+  }
+);

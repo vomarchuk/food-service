@@ -1,22 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useLocalStorage } from '../../Hooks';
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import { Container } from '../../components/Container';
 
 import { BigCardProduct } from '../../components/BigCardProduct';
 // import { Carousel } from '../../components/Carousel';
 
-// import { backEnd } from '../../goods';
-
+import { productsSelectors, productsOperations } from '../../redux/products';
 // import style from './ProductPage.module.scss';
 
 export const ProductPage = () => {
-  const [products] = useLocalStorage('products', '');
-  const [product, setProduct] = useState(null);
+  const dispatch = useDispatch();
   const { productId } = useParams();
 
+  const product = useSelector(productsSelectors.getProducts);
   // const getCompositionProduct = (product) => {
   //   return product.compositionId.map((id) => {
   //     return backEnd.products.find((product) => {
@@ -26,15 +25,12 @@ export const ProductPage = () => {
   // };
 
   useEffect(() => {
-    const currentProductById = JSON.parse(products).find(
-      (p) => p.productId === productId
-    );
-    setProduct(currentProductById);
-  }, [productId, products]);
+    dispatch(productsOperations.fetchProductById(productId));
+  }, [dispatch]);
 
   return (
     <>
-      {product?.largeImage && <BigCardProduct product={product} />}
+      {product && product?.largeImage && <BigCardProduct product={product} />}
       {/* {product?.compositionId && ( */}
       {/* <Carousel products={getCompositionProduct(product)} /> */}
       {/* )} */}

@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { cartActions, cartSelectors } from 'redux/cart';
 import { categoriesSelectors } from 'redux/categories';
 import { productsOperations, productsSelectors } from 'redux/products';
-
-import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { Button } from '@mui/material';
 import { Container } from 'components/Container';
@@ -14,12 +12,12 @@ import { notify } from 'components/Toast';
 import { colors } from 'constants';
 
 // import { sortProduct, getCurrentProductsCategory } from 'helpers';
-import { typesSort } from 'goods';
+// import { typesSort } from 'goods';
 
 import style from './ProductsPage.module.scss';
 ////////////////////////////////////////////////////////////////
 
-const { DEFAULT } = typesSort;
+// const { DEFAULT } = typesSort;
 
 export const ProductsPage = () => {
   // const { pathname } = useLocation();
