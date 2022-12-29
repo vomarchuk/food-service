@@ -1,7 +1,7 @@
 /* eslint-disable no-fallthrough */
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocalStorage } from '../../Hooks';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+// import { useLocalStorage } from 'Hooks';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   HomePage,
@@ -17,8 +17,8 @@ import { Footer } from '../Footer';
 import '../BackToTop/BackToTop';
 import { ToastContainer } from 'react-toastify';
 
-import * as categoriesOperations from '../../redux/categories/categoriesOperations';
-import { productsOperations } from '../../redux/products';
+import { categoriesOperations } from 'redux/categories';
+// import { productsOperations } from 'redux/products';
 
 function App() {
   const dispatch = useDispatch();

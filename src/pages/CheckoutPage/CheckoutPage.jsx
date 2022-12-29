@@ -137,7 +137,7 @@ export const CheckoutPage = () => {
               <Field
                 id="comment"
                 name="comment"
-                placeholder="Сomment to the order"
+                placeholder="Comment to the order"
                 className={style.fullField}
               />
               <div className={style.radioButtonBox}>

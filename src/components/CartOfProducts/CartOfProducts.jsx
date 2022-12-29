@@ -63,7 +63,7 @@ export const CartOfProducts = ({ order }) => {
                   </IconButton>
                 </Box>
 
-                <span className={style['product__summ']}>
+                <span className={style['product__sum']}>
                   {quantity * price} zl
                 </span>
               </div>

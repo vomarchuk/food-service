@@ -1,9 +1,11 @@
+// import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// import { productsOperations } from '../../redux/products';
 
 import SearchIcon from '@mui/icons-material/Search';
 import { Autocomplete, TextField, IconButton, styled } from '@mui/material';
-
-import { Link } from 'react-router-dom';
 
 import { Container } from '../Container';
 import { Logotype } from '../Logotype';
@@ -13,11 +15,18 @@ import style from './Header.module.scss';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  // const dispatch = useDispatch();
+
   const getValueForSearch = (evt, value) => {
     console.log(value?.label);
   };
-  const handleClick = () => setIsOpen(true);
+  const handleClick = () => {
+    // dispatch(productsOperations.fetchProducts());
+    setIsOpen(true);
+  };
   const handleClose = () => setIsOpen(false);
+
+  const productsForSearch = [{ label: 'sushi1' }, { label: 'sushi2' }];
 
   return (
     <>
@@ -68,7 +77,7 @@ export const Header = () => {
                   disablePortal
                   onClose={handleClose}
                   id="searchProduct"
-                  options={products}
+                  options={productsForSearch}
                   sx={{
                     width: 330,
                     backgroundColor: colors.MAIN_LIGHT_COLOR,
@@ -86,7 +95,9 @@ export const Header = () => {
   );
 };
 
-const products = [{ label: 'sushi1' }, { label: 'sushi2' }];
+// .map((product) => {
+//   return { label: product.productName, id: product['_id'] };
+// });
 
 const CustomTextField = styled(TextField)({
   '& label.Mui-focused': {

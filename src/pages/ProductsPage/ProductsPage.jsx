@@ -50,7 +50,7 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     dispatch(productsOperations.fetchProductsByCategoryId(categoryId));
-  }, [dispatch]);
+  }, [categoryId, dispatch]);
   return (
     <Container>
       {category && (
