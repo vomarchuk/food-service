@@ -18,9 +18,9 @@ import '../BackToTop/BackToTop';
 import { ToastContainer } from 'react-toastify';
 
 import { categoriesOperations } from 'redux/categories';
-// import { productsOperations } from 'redux/products';
 
 function App() {
+  // console.log(FeedbackPage);
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(productsOperations.fetchProducts());
@@ -29,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/:categoryId" element={<ProductsPage />} />
@@ -38,6 +39,7 @@ function App() {
         <Route path="/feedback" element={<FeedbackPage />} />
       </Routes>
       <Footer />
+
       <ToastContainer />
     </BrowserRouter>
   );

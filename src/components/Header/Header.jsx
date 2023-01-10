@@ -1,11 +1,8 @@
-// import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// import { productsOperations } from '../../redux/products';
-
-import SearchIcon from '@mui/icons-material/Search';
-import { Autocomplete, TextField, IconButton, styled } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
+import { IconButton, Modal, Box } from '@mui/material';
 
 import { Container } from '../Container';
 import { Logotype } from '../Logotype';
@@ -15,18 +12,9 @@ import style from './Header.module.scss';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // const dispatch = useDispatch();
 
-  const getValueForSearch = (evt, value) => {
-    console.log(value?.label);
-  };
-  const handleClick = () => {
-    // dispatch(productsOperations.fetchProducts());
-    setIsOpen(true);
-  };
+  const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
-
-  const productsForSearch = [{ label: 'sushi1' }, { label: 'sushi2' }];
 
   return (
     <>
@@ -55,13 +43,13 @@ export const Header = () => {
             </div>
             <IconButton
               aria-label="search"
-              onClick={handleClick}
+              onClick={handleOpen}
               type={'button'}
               sx={{
                 padding: '8px',
               }}
             >
-              <SearchIcon
+              <LoginIcon
                 sx={{
                   width: '30px',
                   height: '30px',
@@ -69,53 +57,29 @@ export const Header = () => {
                 }}
               />
             </IconButton>
-            {isOpen && (
-              <div className={style.searchForm}>
-                <Autocomplete
-                  className={style.searchInput}
-                  onChange={getValueForSearch}
-                  disablePortal
-                  onClose={handleClose}
-                  id="searchProduct"
-                  options={productsForSearch}
-                  sx={{
-                    width: 330,
-                    backgroundColor: colors.MAIN_LIGHT_COLOR,
-                  }}
-                  renderInput={(params) => (
-                    <CustomTextField {...params} label="Enter to search" />
-                  )}
-                />
-              </div>
-            )}
+            <Modal open={isOpen} onClose={handleClose}>
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%,-50%)',
+                  bgcolor: 'background.paper',
+                  border: '2px, solid, #000',
+                  width: 300,
+                  // height: 200,
+
+                  pt: '10px',
+                  pb: '10px',
+                  px: '10px',
+                }}
+              >
+                <h3>Hello! I'm modal of login!!!!!!!!</h3>
+              </Box>
+            </Modal>
           </div>
         </Container>
       </header>
     </>
   );
 };
-
-// .map((product) => {
-//   return { label: product.productName, id: product['_id'] };
-// });
-
-const CustomTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: colors.MAIN_DARK_COLOR,
-    fontSize: '20px',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'green',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: colors.SECONDARY_COLOR,
-    },
-    '&:hover fieldset': {
-      borderColor: colors.MAIN_ACCENT_COLOR,
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: colors.MAIN_ACCENT_COLOR,
-    },
-  },
-});
