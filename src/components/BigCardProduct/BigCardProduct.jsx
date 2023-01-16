@@ -5,15 +5,13 @@ import { Button } from '@mui/material';
 
 import { Container } from 'components/Container';
 import { Title } from 'components/Title';
-import { Image } from 'components/Image';
 import { colors } from 'constants';
 import { notify } from 'components/Toast';
 import style from './BigCardProduct.module.scss';
 
 export const BigCardProduct = ({ product }) => {
   const productOfCart = useSelector(cartSelectors.getCartOfProducts);
-  const { largeImage, productName, chunks, weight, price } = product;
-  console.log(product);
+  const { productName, chunks, weight, price, productImage } = product;
   const dispatch = useDispatch();
 
   const handleClick = (currentProduct) => {
@@ -32,7 +30,7 @@ export const BigCardProduct = ({ product }) => {
   return (
     <Container>
       <div className={style.card}>
-        <Image src={largeImage} alt={productName} width="300px" />
+        <img src={productImage} alt={productName} width="300px" />
 
         <Title text={productName} />
         {weight !== null && chunks !== null && (

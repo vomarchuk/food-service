@@ -65,22 +65,17 @@ export const ProductsPage = () => {
             const {
               _id: productId,
               productName,
+              productImage,
               weight,
               chunks,
               price,
-              smallImage,
             } = filteredProduct;
             const currentProduct = { ...filteredProduct, quantity: 1 };
 
             return (
               <li key={productId} className={style.productItem}>
-                <img
-                  src={smallImage.x1}
-                  srcSet={`${smallImage.x1} 1x,
-                          ${smallImage.x2} 2x`}
-                  alt={`${productName}`}
-                  width="100px"
-                />
+                <img src={productImage} alt={`${productName}`} width="100px" />
+
                 <div className={style.description}>
                   <Link
                     to={`/${categoryId}/${productId}`}

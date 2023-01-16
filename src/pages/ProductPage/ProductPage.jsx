@@ -30,7 +30,7 @@ export const ProductPage = () => {
 
   return (
     <>
-      {product && product?.largeImage && <BigCardProduct product={product} />}
+      <BigCardProduct product={product} />
       {/* {product?.compositionId && ( */}
       {/* <Carousel products={getCompositionProduct(product)} /> */}
       {/* )} */}

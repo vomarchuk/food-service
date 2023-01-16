@@ -75,6 +75,14 @@ export const Header = () => {
                 }}
               >
                 <h3>Hello! I'm modal of login!!!!!!!!</h3>
+                <form
+                  id="form-add-image"
+                  action=""
+                  encType="multipart/form-data"
+                >
+                  <input name="cover" type="file" />
+                  <button>Add</button>
+                </form>
               </Box>
             </Modal>
           </div>
