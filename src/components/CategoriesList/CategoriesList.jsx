@@ -16,7 +16,7 @@ export const CategoriesList = () => {
     sortingCategories.sort((first, last) => first.doubleCard - last.doubleCard);
   }
   const x =
-    'https://food-service-api.herokuapp.com/productsImage/salmon-set.jpg';
+    'https://food-service-api.herokuapp.com/productsImage/salmon-set.webp';
 
   return (
     <Grid

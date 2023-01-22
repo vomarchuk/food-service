@@ -20,10 +20,8 @@ import { ToastContainer } from 'react-toastify';
 import { categoriesOperations } from 'redux/categories';
 
 function App() {
-  // console.log(FeedbackPage);
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(productsOperations.fetchProducts());
     dispatch(categoriesOperations.fetchCategories());
   }, [dispatch]);
   return (
