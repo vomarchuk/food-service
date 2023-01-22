@@ -5,15 +5,18 @@ import { Button } from '@mui/material';
 
 import { Container } from 'components/Container';
 import { Title } from 'components/Title';
-import { colors } from 'constants';
 import { notify } from 'components/Toast';
+import { IsLoading } from 'components/isLoading/IsLoading';
+
+import { colors } from 'constants';
+
 import style from './BigCardProduct.module.scss';
 
 export const BigCardProduct = ({ product }) => {
   const productOfCart = useSelector(cartSelectors.getCartOfProducts);
-  const { productName, chunks, weight, price, productImage } = product;
+  const { productName, chunks, weight, price, productImageUrl } = product;
+  console.log(productImageUrl);
   const dispatch = useDispatch();
-
   const handleClick = (currentProduct) => {
     const isDuplicate = productOfCart.filter(({ _id: productId }) => {
       return productId === currentProduct['_id'];
@@ -30,7 +33,15 @@ export const BigCardProduct = ({ product }) => {
   return (
     <Container>
       <div className={style.card}>
-        <img src={productImage} alt={productName} width="300px" />
+        {product.productImageUrl ? (
+          <img
+            src={`https://food-service-api.herokuapp.com/${productImageUrl}`}
+            alt={productName}
+            width="300px"
+          />
+        ) : (
+          <IsLoading />
+        )}
 
         <Title text={productName} />
         {weight !== null && chunks !== null && (

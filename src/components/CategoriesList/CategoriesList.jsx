@@ -15,6 +15,8 @@ export const CategoriesList = () => {
     sortingCategories.push(...categories);
     sortingCategories.sort((first, last) => first.doubleCard - last.doubleCard);
   }
+  const x =
+    'https://food-service-api.herokuapp.com/productsImage/salmon-set.jpg';
 
   return (
     <Grid
@@ -49,7 +51,7 @@ export const CategoriesList = () => {
                 key={categoryId}
                 categoryId={categoryId}
                 categoryName={categoryName}
-                smallImage={smallImage}
+                smallImage={x}
                 fullName={fullName}
                 soon={soon}
                 doubleCard={doubleCard}

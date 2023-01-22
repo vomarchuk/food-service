@@ -65,7 +65,7 @@ export const ProductsPage = () => {
             const {
               _id: productId,
               productName,
-              productImage,
+              productImageUrl,
               weight,
               chunks,
               price,
@@ -74,7 +74,11 @@ export const ProductsPage = () => {
 
             return (
               <li key={productId} className={style.productItem}>
-                <img src={productImage} alt={`${productName}`} width="100px" />
+                <img
+                  src={`https://food-service-api.herokuapp.com/${productImageUrl}`}
+                  alt={`${productName}`}
+                  width="100px"
+                />
 
                 <div className={style.description}>
                   <Link

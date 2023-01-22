@@ -7,9 +7,8 @@ import { notify } from 'components/Toast';
 import { colors } from 'constants';
 
 import { cartActions } from 'redux/cart';
-// import { cartActions } from '../../redux/cart';
-
 import style from './CartOfProducts.module.scss';
+
 export const CartOfProducts = ({ order }) => {
   const dispatch = useDispatch();
   const totalOrder = order.reduce((total, product) => {
@@ -34,13 +33,17 @@ export const CartOfProducts = ({ order }) => {
         const {
           _id: productId,
           productName,
-          productImage,
+          productImageUrl,
           quantity,
           price,
         } = product;
         return (
           <div className={style['product']} key={productId}>
-            <img src={productImage} alt={productName} width="90px" />
+            <img
+              src={`https://food-service-api.herokuapp.com/${productImageUrl}`}
+              alt={productName}
+              width="90px"
+            />
             <Box className={style['product__description']}>
               <p className={style['text']}>{productName}</p>
               <div className={style['wrapper']}>

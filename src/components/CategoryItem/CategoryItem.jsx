@@ -12,13 +12,7 @@ export const CategoryItem = ({
 }) => {
   return soon ? (
     <div className={style.link}>
-      <img
-        className={style.cardImage}
-        src={smallImage.x1}
-        alt={fullName}
-        srcSet={`${smallImage.x1} 1x,
-        ${smallImage.x2}2x `}
-      />
+      <img className={style.cardImage} src={smallImage} alt={fullName} />
       <Box>
         <h2 className={style.cardTitle}>{fullName}</h2>
         {soon && <p className={style.cardSoon}>Soon</p>}
@@ -26,13 +20,7 @@ export const CategoryItem = ({
     </div>
   ) : (
     <Link className={style.link} to={`/${categoryId}`}>
-      <img
-        className={style.cardImage}
-        src={smallImage.x1}
-        alt={fullName}
-        srcSet={`${smallImage.x1} 1x,
-        ${smallImage.x2}2x `}
-      />
+      <img className={style.cardImage} src={smallImage} alt={fullName} />
       <Box>
         <h2 className={style.cardTitle}>{fullName}</h2>
       </Box>
